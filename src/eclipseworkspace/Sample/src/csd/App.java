@@ -1,22 +1,39 @@
 /*----------------------------------------------------------------------------------------------------------------------
- 	Yalnızca sabitlerden ve operatörlerden oluşan yani içerisinde değişken olmayan ifadelere "sabit ifadesi (constant expression)"
- 	denir. Bu anlamda tek başına bir sabit de sabit ifadesidir.
- 	
- 	Anahtar Notlar: İleride aslında sabit ifadesi olarak kullanılabilen değişkenler de göreceğiz. Bu tarz değişkenler de 
- 	bir ifade içerisinde sabit olarak ele alınırlar
- 	
- 	Derleyiciler sabit ifadelerinin değerlerini hesaplayarak sonucu "byte code"'a yazarlar. Bu optimizasyona 
- 	"constant folding optimization" denir. Bu sebeple aşağıdaki örnekteki çarpma sonucu arakoda yazılır. Örnekteki
- 	bazı detaylar ileride ele alınacaktır
+	 Aşağıdaki örnekte işlem sırası ile operatörlerin öncelik sırası aynıdır. Yine en soldaki önce yapılır. Yani yine
+	 Matematiksel olarak doğru sonuca en kısa yoldan ulaşılır
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{			
-		long divider = 1000L * 60 * 60 * 24 * 365; //byte code -> 31536000000
+		boolean result;
 		
-		System.out.println(divider);
+		result = Sample.bar() && Sample.foo() || Sample.tar();
+		
+		System.out.printf("result = %b%n", result);
 	}
 }
 
+class Sample {
+	public static boolean foo()
+	{
+		System.out.println("foo");
+		
+		return true;
+	}
+	
+	public static boolean bar()
+	{
+		System.out.println("bar");
+		
+		return false;
+	}
+	
+	public static boolean tar()
+	{
+		System.out.println("tar");
+		
+		return false;
+	}
+}
