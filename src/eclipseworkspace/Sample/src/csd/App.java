@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	-- operatörünün postfix kullanımında ürettiği değer yani işleme giren değer azaltılMAmış değerdir 
+	Aşağıdaki örnekte ++ ve -- operatörleri ve operandları aynı ifadede kullanılmıştır
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
@@ -9,9 +9,10 @@ class App {
 		int a, b;
 		
 		a = 10;
-		b = a--;
+		b = a-- + a++;
 		
 		System.out.printf("a = %d%n", a);
 		System.out.printf("b = %d%n", b);
 	}
 }
+
