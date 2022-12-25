@@ -1,39 +1,28 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	 Aşağıdaki örnekte işlem sırası ile operatörlerin öncelik sırası aynıdır. Yine en soldaki önce yapılır. Yani yine
-	 Matematiksel olarak doğru sonuca en kısa yoldan ulaşılır
+	if deyiminde bileşk deyim kullanımı
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
-	{			
-		boolean result;
+	{		
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int val = kb.nextInt();
 		
-		result = Sample.bar() && Sample.foo() || Sample.tar();
+		if (val % 2 == 0) {
+			System.out.println("Çift sayı girdiniz");
+			val /= 2;
+		}
+		else {
+			System.out.println("Tek sayı girdiniz");
+			val *= 2;
+		}	
 		
-		System.out.printf("result = %b%n", result);
+		System.out.printf("val = %d%n", val);
+		
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
 
-class Sample {
-	public static boolean foo()
-	{
-		System.out.println("foo");
-		
-		return true;
-	}
-	
-	public static boolean bar()
-	{
-		System.out.println("bar");
-		
-		return false;
-	}
-	
-	public static boolean tar()
-	{
-		System.out.println("tar");
-		
-		return false;
-	}
-}
+
