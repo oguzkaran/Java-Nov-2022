@@ -1,61 +1,50 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Katsayıları klavyeden alınan ikinci dereceden bir denklemin köklerini bulup ekrana yazdıran
-	programı yazınz.
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının basamak sayısını döndüren counDigits isimli metodu
+	NumberUtil isimli sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz
 	Not: İleride daha iyisi yazılacaktır
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
-	{		
-		QuadraticEquationSolverApp.run();
+	{	
+		CountDigitsTest.run();
 	}
 }
 
-
-class QuadraticEquationSolverApp {
+class CountDigitsTest {
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
-		System.out.print("Katsayıları giriniz:");
-		double a = kb.nextDouble();
-		double b = kb.nextDouble();
-		double c = kb.nextDouble();
-
-		QuadraticEquationSolver.printRoots(a, b, c);
+		System.out.print("Bir sayı giriniz:");
+		
+		int a;
+		
+		while ((a = Integer.parseInt(kb.nextLine())) != 0) {
+			System.out.printf("%d sayısının basamak sayısı:%d%n", a, NumberUtil.countDigits(a));
+			System.out.print("Bir sayı giriniz:");
+		}
+		
+		System.out.printf("0 sayısının basamak sayısı:%d%n", NumberUtil.countDigits(0));
+		
+		System.out.println("Tekrar yapıyor musunuz?");
 	}
 }
 
-class QuadraticEquationSolver {
-	public static void doWorkForRoots(double delta, double a, double b)
+class NumberUtil {
+	public static int countDigits(int a)
 	{
-		double x1, x2;
-		double sqrtDelta;
+		if (a == 0)
+			return 1;
 		
-		sqrtDelta = Math.sqrt(delta);
+		int count = 0;
 		
-		x1 = (-b + sqrtDelta) / (2 * a);
-		x2 = (-b - sqrtDelta) / (2 * a);
+		while (a != 0) {
+			++count;
+			a /= 10;
+		}
 		
-		System.out.printf("x1 = %f, x2 = %f%n", x1, x2);
-	}
-	
-
-	public static double getDelta(double a, double b, double c)
-	{
-		return b * b - 4 * a * c;
-	}
-	
-	public static void printRoots(double a, double b, double c)
-	{
-		double delta = getDelta(a, b, c);
-		
-		if (delta >= 0)
-			doWorkForRoots(delta, a, b);
-		else
-			System.out.println("Gerçek kök yok");
-		
+		return count;
 	}
 }
-
