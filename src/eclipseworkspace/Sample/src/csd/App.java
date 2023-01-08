@@ -1,9 +1,10 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının faktoriyel değerine geri dönen factorial isimli metodu
-	yazınız ve aşağıdaki kod ile test ediniz
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir n değeri için n-inci asal sayıyı döndüren getPrime isimli
+	metodu NumberUtil sınıfı içerisinde yazınız ve test ediniz
+	
 	Açıklamalar:
-	 0! = 1 ve 1! = 1 olmak üzere
-	 n! = 1 * 2 * ... * n - 1 * n
+	- iPrime metodunun hızlı versiyonunu kullanınız
+	- n değerinin poziitf olmaması durumu metot içerisinde kontrol edilmeyecektir
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
@@ -22,12 +23,39 @@ class IsPrimeTest {
 	}
 }
 
+
 class NumberUtil {
-	public static int factorial(int n)
+	public static int getPrime(int n)
 	{
 		//TODO:
 	}
+	
+	public static boolean isPrime(long a)
+	{
+		if (a <= 1)
+			return false;
+		
+		if (a % 2 == 0)
+			return a == 2;
+		
+		if (a % 3 == 0)
+			return a == 3;
+		
+		if (a % 5 == 0)
+			return a == 5;
+		
+		if (a % 7 == 0)
+			return a == 7;
+		
+		for (long i = 11; i * i <= a; i += 2)
+			if (a % i == 0)
+				return false;
+		
+		return true;
+		
+	}
 }
+
 
 
 
