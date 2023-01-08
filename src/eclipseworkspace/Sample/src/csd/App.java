@@ -1,44 +1,58 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden a ve b değerleri için a'nın b-inci kuvvetini döndüren pow isimli
-	metodu NumberUtil sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz:
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının Armstrong sayısı olup olmadığını test eden isArmstrong
+	isimli metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
 	
 	Açıklamalar:
-	- Math sınıfının pow metodu kullanılmayacaktır
-	- Metot negatif b değerleri için 1 değerine dönecektir
+		- Bir sayının her basamağının basamak sayıncı kuvvetleri toplandığında sayının kendisine eşitse bu sayıya 
+		Armstrong sayısı denir. Örneğin:
+			153 -> 1  * 1 * 1 + 5 * 5 * 5 + 3 * 3 * 3 = 153
+			
+		- Kuvvet alma işlemi için yazılmış pow metodunu kullanınız
+		
+		- Sayı negatif ise Armstrong sayıaı kabul etmeyiniz
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{	
-		PowTest.run();
+		IsArmstrongTest.run();
 	}
 }
 
-class PowTest {
+class IsArmstrongTest {
 	public static void run()
 	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-				
-		for (;;) {
-			System.out.print("Tabanı giriniz:");
-			int a = Integer.parseInt(kb.nextLine());
-			
-			System.out.print("Üssü giriniz:");
-			int b = Integer.parseInt(kb.nextLine());
-			System.out.printf("pow(%d, %d) = %d%n", a, b, NumberUtil.pow(a, b));
-			
-			if (a == 0) {
-				System.out.println("Tekrar yapıyor musunuz?");
-				return;
-			}		
-		}
+		for (int a = -10; a <= 99999; ++a)
+			if (NumberUtil.isArmstrong(a))
+				System.out.println(a);
 	}
 }
 
 class NumberUtil {
-	public static int pow(int a, int b)
+	public static boolean isArmstrong(int a)
 	{
 		//TODO:
+	}
+	
+	public static int countDigits(int a)
+	{
+		int count = 0;
+		
+		do {
+			++count;
+			a /= 10;
+		} while (a != 0); 
+		
+		return count;
+	}
+	public static int pow(int a, int b)
+	{
+		int result = 1;
+		
+		while (b-- > 0)
+			result *= a;
+		
+		return result;
 	}
 }
