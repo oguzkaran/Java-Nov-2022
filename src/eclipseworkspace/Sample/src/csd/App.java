@@ -1,58 +1,33 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının Armstrong sayısı olup olmadığını test eden isArmstrong
-	isimli metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
-	
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının faktoriyel değerine geri dönen factorial isimli metodu
+	yazınız ve aşağıdaki kod ile test ediniz
 	Açıklamalar:
-		- Bir sayının her basamağının basamak sayıncı kuvvetleri toplandığında sayının kendisine eşitse bu sayıya 
-		Armstrong sayısı denir. Örneğin:
-			153 -> 1  * 1 * 1 + 5 * 5 * 5 + 3 * 3 * 3 = 153
-			
-		- Kuvvet alma işlemi için yazılmış pow metodunu kullanınız
-		
-		- Sayı negatif ise Armstrong sayıaı kabul etmeyiniz
+	 0! = 1 ve 1! = 1 olmak üzere
+	 n! = 1 * 2 * ... * n - 1 * n
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{	
-		IsArmstrongTest.run();
+		IsPrimeTest.run();
 	}
 }
 
-class IsArmstrongTest {
+class IsPrimeTest {
 	public static void run()
-	{
-		for (int a = -10; a <= 99999; ++a)
-			if (NumberUtil.isArmstrong(a))
-				System.out.println(a);
+	{	
+		for (int n = 0; n < 13; ++n)
+			System.out.printf("%d! = %d%n", n, NumberUtil.factorial(n));
 	}
 }
 
 class NumberUtil {
-	public static boolean isArmstrong(int a)
+	public static int factorial(int n)
 	{
 		//TODO:
 	}
-	
-	public static int countDigits(int a)
-	{
-		int count = 0;
-		
-		do {
-			++count;
-			a /= 10;
-		} while (a != 0); 
-		
-		return count;
-	}
-	public static int pow(int a, int b)
-	{
-		int result = 1;
-		
-		while (b-- > 0)
-			result *= a;
-		
-		return result;
-	}
 }
+
+
+
