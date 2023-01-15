@@ -1,13 +1,13 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden gün ay ve yıl bilgisine ilişkin tarihin yılın kaçıncı günü 
-	olduğunu döndüren getDayOfYear metodunu yazınız ve aşağıdaki kod ile test ediniz
+	Sınıf Çalışması: Parametresi ile aldığı int türden gün ay ve yıl bilgisine ilişkin tarihin haftanın hangi gününe 
+	geldiği bilgisini aşağıdaki açıklamalara göre dmndüren getDayOfWeek isimli metodu yazınız ve test ediniz
 	Açıklamalar:
-	  - Metot geçersiz bir tarih için -1 değerine geri dönecektir
-	  - Yılın kaçıncı günü olduğuna ilişkin algoritma için aşağıdaki örnekleri inceleyiniz:
-	  	01.03.2020 -> 1 + 29 + 31 = 61
-	  	01.03.2023 -> 1 + 28 + 31 = 60
-	  	31.12.2020 -> 31 + 30 + ... + 29 + 31 = 366
-	  	31.12.2023 -> 31 + 30 + ... + 28 + 31 = 365
+		- Metot geçersiz bir tarih durumunda -1 değerine geri dönecektir
+		- Haftanın günü 01.01.1900 ile verilen tarih arasındaki (bverilen tarih dahil) gün sayısının 7 ilem bölümünden
+		elde edilen kalan ile belirlenebilir. Buna göre sıfır "pazar, 1 "pazartesi", 2 "salı" ... 6 "cumartesi" günlerine
+		kaşılık gelir
+		
+		- 01.01.1900 öncesindeki tarihler geçersiz sayılacaktır
 	  	 
 	(İleride daha iyisi yazılacaktır)
 -----------------------------------------------------------------------------------------------------------------------*/
@@ -48,7 +48,40 @@ class GetDayOfYearTest {
 class DateUtil {
 	public static int getDayOfYear(int day, int month, int year)
 	{
-		//TODO:
+		if (!isValidDate(day, month, year))
+			return -1;
+		
+		int totalDays = day;
+		
+		switch (month - 1) {
+		case 11:
+			totalDays += 30;
+		case 10:
+			totalDays += 31;
+		case 9:
+			totalDays += 30;
+		case 8:
+			totalDays += 31;
+		case 7:
+			totalDays += 31;
+		case 6:
+			totalDays += 30;
+		case 5:
+			totalDays += 31;
+		case 4:
+			totalDays += 30;
+		case 3:
+			totalDays += 31;
+		case 2:
+			totalDays += 28;
+			if (isLeapYear(year))
+				++totalDays;
+		case 1:
+			totalDays += 31;
+		}
+		
+		return totalDays;
+		
 	}
 	
 	public static boolean isValidDate(int day, int month, int year)
@@ -81,3 +114,4 @@ class DateUtil {
 		return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
 	}
 }
+
