@@ -1,102 +1,28 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Demo menü uygulaması
-	(İleride daha iyisi yazılacaktır) 
+	Sınıf Çalışması: Parametresi ile aldığı int türden yıl değerinin artık yıl olup olmadığını test edebn isLeapYeaar
+	isimli metodu yazınız ve aşağıdaki kod ile test ediniz 
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{	
-		MenuApp.run();
+		IsLeapYearTest.run();
 	}
 }
 
-
-class MenuApp {
+class IsLeapYearTest {
 	public static void run()
 	{
-		Menu.run();
-		System.out.println("Tekrar yapıyor musunuz?");
+		for (int y = 1996; y <= 2104; ++y)
+			if (DateUtil.isLeapYear(y))
+				System.out.println(y);
 	}
 }
 
-class Menu {
-	public static void printMenu()
+class DateUtil {
+	public static boolean isLeapYear(int year)
 	{
-		System.out.println("1.Ekle");
-		System.out.println("2.Sil");
-		System.out.println("3.Güncelle");
-		System.out.println("4.Listele");
-		System.out.println("5.Çıkış");
-		System.out.print("Seçenek:");
-	}
-	
-	public static void doInsert()
-	{
-		System.out.println("---------------------------------");
-		System.out.println("Ekle seçildi");
-		System.out.println("---------------------------------");
-	}
-	
-	public static void doDelete()
-	{
-		System.out.println("---------------------------------");
-		System.out.println("Sil seçildi");
-		System.out.println("---------------------------------");
-	}
-	
-	public static void doUpdate()
-	{
-		System.out.println("---------------------------------");
-		System.out.println("Güncelle seçildi");
-		System.out.println("---------------------------------");
-	}
-	
-	public static void doList()
-	{
-		System.out.println("---------------------------------");
-		System.out.println("Listele seçildi");
-		System.out.println("---------------------------------");
-	}
-	
-	public static void doOption(int option)
-	{
-		switch (option) {
-		case 1:
-			doInsert();
-			break;
-		case 2:
-			doDelete();
-			break;
-		case 3:
-			doUpdate();
-			break;
-		default:
-			doList();
-			
-		}
-	}
-	
-	public static void run()
-	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		
-		for (;;) {
-			printMenu();
-			int option = Integer.parseInt(kb.nextLine());
-			
-			if (1 <= option && option <= 5) {
-				if (option == 5)
-					break;
-				
-				doOption(option);
-			}
-			else
-				System.out.println("Geçersiz Seçenek!...");
-		}
-		
-		System.out.println("Teşekkürler");
-		System.out.println("C ve Sistem Programcıları Derneği");	
+		return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
 	}
 }
-
