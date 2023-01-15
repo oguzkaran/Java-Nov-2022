@@ -1,15 +1,8 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden gün ay ve yıl bilgisine ilişkin tarihin haftanın hangi gününe 
-	geldiği bilgisini aşağıdaki açıklamalara göre dmndüren getDayOfWeek isimli metodu yazınız ve test ediniz
-	Açıklamalar:
-		- Metot geçersiz bir tarih durumunda -1 değerine geri dönecektir
-		- Haftanın günü 01.01.1900 ile verilen tarih arasındaki (bverilen tarih dahil) gün sayısının 7 ilem bölümünden
-		elde edilen kalan ile belirlenebilir. Buna göre sıfır "pazar, 1 "pazartesi", 2 "salı" ... 6 "cumartesi" günlerine
-		kaşılık gelir
-		
-		- 01.01.1900 öncesindeki tarihler geçersiz sayılacaktır
-	  	 
-	(İleride daha iyisi yazılacaktır)
+	switch expression:
+	java 12 ile birlikte "preview" olarak "switch expression" dile mdahil edilmiştir. Bu durumda swicth deyimi artık ifade
+	biçiminde de kullanılacak şekilde sentaks semantik olarak geliştirilmiştir. switch deyiminin bu kuıllanımına 
+	"switch expression statement" da denebilir. 
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
@@ -34,18 +27,70 @@ class GetDayOfYearTest {
 			if (day == 0)
 				break;
 			
-			int dayOfYear = DateUtil.getDayOfYear(day, month, year);
-			
-			if (dayOfYear != -1)
-				System.out.printf("%02d/%02d/%04d tarihi yılın %d. günüdür%n", day, month, year, dayOfYear);
-			else
-				System.out.println("Geçersiz tarih!...");
-			
+			DateUtil.printDateTR(day, month, year);
 		}
 	}
 }
 
 class DateUtil {
+	public static void printDateTR(int day, int month, int year)
+	{
+		int dayOfWeek = getDayOfWeek(day, month, year);
+		
+		if (dayOfWeek == -1) {
+			System.out.println("Geçeriz tarih!...");
+			return;
+		}
+		
+		switch (dayOfWeek) {
+		case 0:
+			System.out.printf("%02d/%02d/%04d Pazar%n", day, month, year);
+			break;
+		case 1:
+			System.out.printf("%02d/%02d/%04d Pazartesi%n", day, month, year);
+			break;
+		case 2:
+			System.out.printf("%02d/%02d/%04d Salı%n", day, month, year);
+			break;
+		case 3:
+			System.out.printf("%02d/%02d/%04d Çarşamba%n", day, month, year);
+			break;
+		case 4:
+			System.out.printf("%02d/%02d/%04d Perşembe%n", day, month, year);
+			break;
+		case 5:
+			System.out.printf("%02d/%02d/%04d Cuma%n", day, month, year);
+			break;
+		case 6:
+			System.out.printf("%02d/%02d/%04d Cumartesi%n", day, month, year);
+			break;
+		}
+	}
+	
+	public static int getDayOfWeek(int day, int month, int year)
+	{
+		int totalDays;
+		
+		if (year < 1900 || (totalDays = getDayOfYear(day, month, year)) == -1)
+			return -1;
+		
+		return (totalDays + getTotalDays(year)) % 7;
+		
+	}
+	
+	public static int getTotalDays(int year)
+	{
+		int totalDays = 0;
+		
+		for (int y = 1900; y < year; ++y) {
+			totalDays += 365;
+			if (isLeapYear(y))
+				++totalDays;
+		}
+		
+		return totalDays;
+	}
+	
 	public static int getDayOfYear(int day, int month, int year)
 	{
 		if (!isValidDate(day, month, year))
