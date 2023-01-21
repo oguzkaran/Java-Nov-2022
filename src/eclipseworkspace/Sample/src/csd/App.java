@@ -1,12 +1,15 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Farklı Türlerin Birbirine Atanması (Dönüşümü) (Tür dönüşümleri - Type conversions):
-	
+	double türünden float türüne doğrudan atama geçersizdir
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
-	public static void main(String [] args)	
-	{	
+	public static void main(String [] args)
+	{
+		double a = 12;
+		float b;
 		
+		b = a; //error 
+	
 	}
 }
