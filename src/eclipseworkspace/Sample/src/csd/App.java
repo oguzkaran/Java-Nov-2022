@@ -1,21 +1,20 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	 İşlem Öncesi Otomatik Tür Dönüşümü:
-	 İki operandlı bir operqtör için derleyici önce operandların türüne bakar. Operandlar farklı türdensa bve işlem 
-	 geçerliyse, ortak bir türe dönüştürerek işlem yapılır. Hatta bazı durumlarda iki tür aynı olsa bile ikisini de 
-	 farklı bir türe dönüştürür. Yani derleyici buna yönelik kodlar üretir. Bu dönüştürmeye "işlem önce öncesi otomatik
-	 tür dönüşümü" denir
-	 
-	 
+	 double türünden float türne yapılan explicit dönüşümde bilgi kaybı olabilir. Bu durumda IEEE 754 standardına göre 
+	 yuvarlama hatalaı oluşabilir ve değer float türü ile temsil edilebilecek en yakın değer olarak elde edilir. Ayrıca sayı 
+	 float türü sınırları dışındaysa da aynı şekilde yapılır 
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)
 	{
-		short a = 10;
-		short b = 20;
-		short c;
+		double a = 3.77;
+		float b;
 		
-		c = a + b;
+		b = (float)a;
+		
+		System.out.printf("a = %.20f%n", a);
+		System.out.printf("b = %.20f%n", b);
 	}
 }
+
