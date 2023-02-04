@@ -1,59 +1,26 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının Armstrong sayısı olup olmadığını test eden isArmstrong
-	isimli metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
-	
-	Açıklamalar:
-		- Bir sayının her basamağının basamak sayıncı kuvvetleri toplandığında sayının kendisine eşitse bu sayıya 
-		Armstrong sayısı denir. Örneğin:
-			153 -> 1  * 1 * 1 + 5 * 5 * 5 + 3 * 3 * 3 = 153
-			
-		- Kuvvet alma işlemi için yazılmış pow metodunu kullanınız
-		
-		- Sayı negatif ise Armstrong sayıaı kabul etmeyiniz
+	Anahtar Notlar: Bir sınıf içerisinde AYNI metottan birden fazla olamaz. 
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{	
-		IsArmstrongTest.run();
+		Sample.foo();
+		Mample.foo();
 	}
 }
 
-class IsArmstrongTest {
-	public static void run()
+class Sample {
+	public static void foo()
 	{
-		for (int a = -10; a <= 99999; ++a)
-			if (NumberUtil.isArmstrong(a))
-				System.out.println(a);
+		System.out.println("Sample.foo");
 	}
 }
 
-class NumberUtil {
-	public static boolean isArmstrong(int a)
+class Mample {
+	public static void foo()
 	{
-		return a >= 0 && calculateDigitsPowSum(a) == a;
+		System.out.println("Mample.foo");
 	}
-	
-	public static int calculateDigitsPowSum(int a)
-	{
-		int n = countDigits(a);
-		int total = 0;
-		
-		while (a != 0) {
-			total += Math.pow(a % 10, n);
-			a /= 10;
-		}
-		
-		return total;
-	}
-	
-	public static int countDigits(int a)
-	{
-		if (a == 0)
-			return 1;
-		
-		return (int)Math.log10(Math.abs(a)) + 1;
-	}	
 }
-
