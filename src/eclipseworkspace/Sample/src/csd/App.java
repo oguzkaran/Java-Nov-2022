@@ -1,26 +1,46 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Anahtar Notlar: Bir sınıf içerisinde AYNI metottan birden fazla olamaz. 
+	Homework-003-7. sorunun bir çözmü
+	(Not: Çözüm çalışma sorusunun verildiği tarihe kadar işlenmiş olan konulara göre yazılmıştır) 
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{	
-		Sample.foo();
-		Mample.foo();
+		IsDecimalHarshadTest.run();
 	}
 }
 
-class Sample {
-	public static void foo()
+class IsDecimalHarshadTest {
+	public static void run()
 	{
-		System.out.println("Sample.foo");
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		System.out.print("Bir sayı giriniz:");
+		int n = kb.nextInt();
+		
+		while (n-- > 0)
+			if (NumberUtil.isDecimalHarshad(n + 1))
+				System.out.println(n + 1);	
 	}
 }
 
-class Mample {
-	public static void foo()
+class NumberUtil {
+	public static boolean isDecimalHarshad(int val)
 	{
-		System.out.println("Mample.foo");
+		return val > 0 && val % sumDigits(val) == 0; 
+	}
+	
+	public static int sumDigits(long a)
+	{
+		int sum = 0;
+		
+		while (a != 0) {
+			sum += a % 10;
+			a /= 10;
+		}
+		
+		return Math.abs(sum);
 	}
 }
+
