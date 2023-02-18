@@ -1,19 +1,36 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Veri Yapısı (Data Structure): Verileri belli bir algoritmaya göre tutan ve verilere istenildiği zaman erişilebilen
-	yapılara denir. 
-	
-	Stack veri yapısına eleman ekleme işlemine "push", eleman silme işlemine de "pop" denir. 
-	
-	Anahtar Notlar: Stack veri yapısı "LIFO (Last In First Out)" kuyruk sistemine göre çalışan veri yapısıdır. LIFO'da
-	ekleme sona yapılır. Eleman elde etme (ve silme) sondan yapılır. Yani son eklenen eleman elde edilir. Örneğin, 
-	pişti oyununda ortada biriken kağıtlar için bu veri yapısı kullanılabilir. Ya da örneğin editör programın 
+	Anahtar Notlar: Doğal bir dilde kurulan bir cüm içerisinde özel isimler dışında kalan her kavram soyuttur. Örneğin
+	"Bir araba alacağım" cümlesinde araba soyut bir kavramı temsil eder. Kişi araba aldığında örneğin "ben  ... marka,
+	.. model, ... plakalı ... araba aldım" dediğinde artık bu araba somutlaşmıştır. İşte burada soyut olan araba 
+	nesne yönelimli programlama da bir sınıf, somutlaşmış olan araba ise bir nesnedir
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{
+		Device d; //d bir referans (değişken)
+		Student s; //s bir referans (değişken)
+		Alien a; //a bir referans (değişken)
+	
+		d = new Device(); //*
+		s = new Student(); //**
+		a = new Alien(); //***
 		
+		//...
 	}
 }
 
+
+class Device {
+	//...
+}
+
+
+class Student {
+	//...
+}
+
+class Alien {
+	//...
+}
