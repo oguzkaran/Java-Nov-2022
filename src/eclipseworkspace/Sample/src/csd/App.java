@@ -1,11 +1,12 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Nesne Yönelimli Programlama Tekniği (NYPT): Bu tekniği tek bir cümle ilem anlatmak pek mümkün değildir. Ancak bu 
-	tekniği bilen birisine "sınıflar kullanarak program yazma tekniğidir" şeklinde bir cümle kurulabilir. Aslında 
-	Aslında NYPT anahtar kavramların birleşiminde oluşur. Bu anahta kavramlar birbirlerinden tamamen ayrık değildir.
-	Bu kavramlar içiçe geçmiş daireler gibi düşünülmelidir. Tüm bu anahtar kavramların temelinde kodun daha iyi
-	algılanabilir olması ve daha iyi yönetilmesi vardır. Örneğin benzer işi yapan metotlara aynı ismi vermek iyi bir
-	tekniktir. Çünkü bu durumda bu metotları kullanan kişiler "çok şey var" algısından uzaklaşıp "az şey var" gibi bir
-	algı oluştururlar. Bu da hatırlamayı kolaylaştırır  
+	Veri Yapısı (Data Structure): Verileri belli bir algoritmaya göre tutan ve verilere istenildiği zaman erişilebilen
+	yapılara denir. 
+	
+	Stack veri yapısına eleman ekleme işlemine "push", eleman silme işlemine de "pop" denir. 
+	
+	Anahtar Notlar: Stack veri yapısı "LIFO (Last In First Out)" kuyruk sistemine göre çalışan veri yapısıdır. LIFO'da
+	ekleme sona yapılır. Eleman elde etme (ve silme) sondan yapılır. Yani son eklenen eleman elde edilir. Örneğin, 
+	pişti oyununda ortada biriken kağıtlar için bu veri yapısı kullanılabilir. Ya da örneğin editör programın 
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
