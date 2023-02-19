@@ -1,36 +1,52 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Anahtar Notlar: Doğal bir dilde kurulan bir cüm içerisinde özel isimler dışında kalan her kavram soyuttur. Örneğin
-	"Bir araba alacağım" cümlesinde araba soyut bir kavramı temsil eder. Kişi araba aldığında örneğin "ben  ... marka,
-	.. model, ... plakalı ... araba aldım" dediğinde artık bu araba somutlaşmıştır. İşte burada soyut olan araba 
-	nesne yönelimli programlama da bir sınıf, somutlaşmış olan araba ise bir nesnedir
+	Aynı türden iki referansın birbirine atanması durumunda iki referans da artık aynı nesneyi gösterir duruma gelir.
+	Bu durumda hangi referans ile nesneye erişildiğinin bir önemi yoktur. Aşağıdaki örnekte ** ile belirtilen ifadede
+	s referansı, gösterdiği nesneden kopartılmış ve k'nın içerisindeki adres atandığından artık k ve s aynı nesneyi
+	gösterir duruma gelmiştir
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{
-		Device d; //d bir referans (değişken)
-		Student s; //s bir referans (değişken)
-		Alien a; //a bir referans (değişken)
-	
-		d = new Device(); //*
-		s = new Student(); //**
-		a = new Alien(); //***
+		Sample s, k;
 		
-		//...
+		s = new Sample();
+		k = new Sample();
+		
+		s.x = 10;
+		s.y = true;
+		k.x = 30;
+	
+		System.out.printf("s.x = %d%n", s.x);
+		System.out.printf("s.y = %b%n", s.y);
+		System.out.printf("k.x = %d%n", k.x);
+		System.out.printf("k.y = %b%n", k.y);
+		System.out.println("----------------------------");
+		
+		s = k; //**
+		
+		System.out.printf("s.x = %d%n", s.x);
+		System.out.printf("s.y = %b%n", s.y);
+		System.out.printf("k.x = %d%n", k.x);
+		System.out.printf("k.y = %b%n", k.y);
+		System.out.println("----------------------------");
+		
+		++s.x;
+		
+		System.out.printf("s.x = %d%n", s.x);
+		System.out.printf("s.y = %b%n", s.y);
+		System.out.printf("k.x = %d%n", k.x);
+		System.out.printf("k.y = %b%n", k.y);
+		System.out.println("----------------------------");
+		
 	}
 }
 
 
-class Device {
+class Sample {
+	public int x;
+	public boolean y;
 	//...
 }
 
-
-class Student {
-	//...
-}
-
-class Alien {
-	//...
-}
