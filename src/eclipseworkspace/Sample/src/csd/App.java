@@ -1,41 +1,66 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıfın non-static bir metodu içerisinde o sınıfın non-static metodu doğrudan çağrılabilir. Doğrudan çağrılan metot,
-	çağıran metodun çağrılmasında kullanılan referans ile çağrılmış olur
+	Sınıf Çalışması: Katsayıları klavyeden alınan ikinci dereceden bir denklemin köklerini bulup ekrana yazdıran
+	programı yazınz.
+	
+	Sınıfın aşağıdaki kullanım şekli sınıfların yararı 100 birim düşünülürse %1 civarındadır. Şüphesiz örnek farklı 
+	yaklaşımlarla da yapılabili. Sınıfın kullanımını göstermek için bu şekilde yazılmıştır. İleride daha iyisi yazılacaktır
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
-	{
-		Sample s1, s2;
-		
-		s1 = new Sample();
-		s2 = new Sample();
-		
-		s1.foo(20);
-		s2.foo(30);
-		
-		System.out.printf("s1.x = %d%n", s1.x);
-		System.out.printf("s2.x = %d%n", s2.x);
+	{		
+		QuadraticEquationSolverApp.run();
 	}
 }
 
+class QuadraticEquationSolverApp {
+	public static void run()
+	{
+		java.util.Scanner kb = new java.util.Scanner(System.in);
+		
+		System.out.print("Katsayıları giriniz:");
+		double a = kb.nextDouble();
+		double b = kb.nextDouble();
+		double c = kb.nextDouble();
 
-class Sample {
-	public int x;
-	
-	public void foo(int a)
-	{
-		bar(a);
+		QuadraticEquation equation = new QuadraticEquation();
+		
+		equation.a = a;
+		equation.b = b;
+		equation.c = c;
+		
+		equation.solve();
+		
+		if (equation.rootsExists)
+			System.out.printf("x1 = %f, x2 = %f%n", equation.x1, equation.x2);
+		else
+			System.out.println("Gerçek kök yok");
 	}
-	
-	public void bar(int a)
-	{
-		x = a;
-	}
-	
-	//...
 }
 
-
+class QuadraticEquation {
+	public double a, b, c;
+	public double x1, x2;
+	public boolean rootsExists;
+	
+	public double getDelta()
+	{
+		return b * b - 4 * a * c;
+	}
+	
+	public void solve()
+	{
+		double delta = getDelta();
+		
+		if (delta >= 0) {
+			double sqrtDelta = Math.sqrt(delta);
+			
+			x1 = (-b + sqrtDelta) / (2 * a);
+			x2 = (-b - sqrtDelta) / (2 * a);
+			rootsExists = true;
+		}
+	}
+	
+}
 
