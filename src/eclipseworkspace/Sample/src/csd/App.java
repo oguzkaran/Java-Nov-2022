@@ -1,66 +1,76 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Katsayıları klavyeden alınan ikinci dereceden bir denklemin köklerini bulup ekrana yazdıran
-	programı yazınz.
-	
-	Sınıfın aşağıdaki kullanım şekli sınıfların yararı 100 birim düşünülürse %1 civarındadır. Şüphesiz örnek farklı 
-	yaklaşımlarla da yapılabili. Sınıfın kullanımını göstermek için bu şekilde yazılmıştır. İleride daha iyisi yazılacaktır
+	Rassal Sayı Üretimi: Bilgisayar ortamında rassal sayılar gerçek hayattaki gibi üretilemez. Çünkü gerçek hayatta
+	bir sayının örneğin bir torbadan çekilmesi durumunda çok çok fazla etken çıkacak sayıyı etkiler. Bu sebeple
+	bilgisayarda üretilen rassal sayılara "pseudo random numbers" denilmektedir. Bu sebeple rassal sayı üretiminin
+	kalitesi değişebilir. Rsaal sayı üretimi her durumda aynı yöntemle yapıldığından yani kabaca static bir yöntem
+	kullanıldığıundan kalitesi yönteme göre değişebilir. Bu anlamda genel olarak aşırı kalite istenirse matematiksel
+	işlemlerden dolayı yavaşlama olabilir, benzer şekilde hızlandırılmak istenirse de kalite düşebilir. Bu anlamda
+	Java'da kullanılan üretim algoritması orta kalite kabul edilebilir. Bilgisayar ortamında rassal sayı üretiminin
+	kalitesine yönelik bilimsel çalışmalar hala devam etmektedir   
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{		
-		QuadraticEquationSolverApp.run();
+		Point p1, p2;
+		
+		p1 = new Point();
+		p2 = new Point();
+		
+		p1.x = 100;
+		p1.y = 200;
+		p2.x = 97;
+		p2.y = 204;
+		
+		
+		p1.print();
+		p2.print();
+		
+		System.out.printf("Distance:%f%n", p1.distance(p2));
+		System.out.printf("Distance:%f%n", p1.distance(97, 204));
+		System.out.printf("Distance:%f%n", p1.distance());
 	}
 }
 
-class QuadraticEquationSolverApp {
-	public static void run()
-	{
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		
-		System.out.print("Katsayıları giriniz:");
-		double a = kb.nextDouble();
-		double b = kb.nextDouble();
-		double c = kb.nextDouble();
-
-		QuadraticEquation equation = new QuadraticEquation();
-		
-		equation.a = a;
-		equation.b = b;
-		equation.c = c;
-		
-		equation.solve();
-		
-		if (equation.rootsExists)
-			System.out.printf("x1 = %f, x2 = %f%n", equation.x1, equation.x2);
-		else
-			System.out.println("Gerçek kök yok");
-	}
-}
-
-class QuadraticEquation {
-	public double a, b, c;
-	public double x1, x2;
-	public boolean rootsExists;
+class Point {
+	public double x, y; 
 	
-	public double getDelta()
+	//...
+	public double distance()
 	{
-		return b * b - 4 * a * c;
+		return distance(0, 0);
 	}
 	
-	public void solve()
+	public double distance(double a, double b)
 	{
-		double delta = getDelta();
+		Point other = new Point();
 		
-		if (delta >= 0) {
-			double sqrtDelta = Math.sqrt(delta);
-			
-			x1 = (-b + sqrtDelta) / (2 * a);
-			x2 = (-b - sqrtDelta) / (2 * a);
-			rootsExists = true;
-		}
+		other.x = a;
+		other.y = b;
+		
+		return distance(other);
 	}
 	
+	public double distance(Point other)
+	{
+		return Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2));
+	}
+	
+	public void offset(double dxy)
+	{
+		offset(dxy, dxy);
+	}
+	
+	public void offset(double dx, double dy)
+	{
+		x += dx;
+		y += dy;
+	}
+	
+	public void print()
+	{
+		System.out.printf("(%.2f, %.2f)%n", x, y);
+	}
 }
 
