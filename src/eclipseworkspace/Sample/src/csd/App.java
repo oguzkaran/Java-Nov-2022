@@ -1,76 +1,55 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Rassal Sayı Üretimi: Bilgisayar ortamında rassal sayılar gerçek hayattaki gibi üretilemez. Çünkü gerçek hayatta
-	bir sayının örneğin bir torbadan çekilmesi durumunda çok çok fazla etken çıkacak sayıyı etkiler. Bu sebeple
-	bilgisayarda üretilen rassal sayılara "pseudo random numbers" denilmektedir. Bu sebeple rassal sayı üretiminin
-	kalitesi değişebilir. Rsaal sayı üretimi her durumda aynı yöntemle yapıldığından yani kabaca static bir yöntem
-	kullanıldığıundan kalitesi yönteme göre değişebilir. Bu anlamda genel olarak aşırı kalite istenirse matematiksel
-	işlemlerden dolayı yavaşlama olabilir, benzer şekilde hızlandırılmak istenirse de kalite düşebilir. Bu anlamda
-	Java'da kullanılan üretim algoritması orta kalite kabul edilebilir. Bilgisayar ortamında rassal sayı üretiminin
-	kalitesine yönelik bilimsel çalışmalar hala devam etmektedir   
+	Sınıf Çalışması: İki zar atıldığında zarların çift gelmesi (ikisinin de aynı) olasılığını yaklaşık olarak 
+	hesaplayan simülasyon programını yazınız
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{		
-		Point p1, p2;
-		
-		p1 = new Point();
-		p2 = new Point();
-		
-		p1.x = 100;
-		p1.y = 200;
-		p2.x = 97;
-		p2.y = 204;
-		
-		
-		p1.print();
-		p2.print();
-		
-		System.out.printf("Distance:%f%n", p1.distance(p2));
-		System.out.printf("Distance:%f%n", p1.distance(97, 204));
-		System.out.printf("Distance:%f%n", p1.distance());
+		CoinTailProbabilitySimulationApp.run();
 	}
 }
 
-class Point {
-	public double x, y; 
-	
-	//...
-	public double distance()
+class CoinTailProbabilitySimulationApp {
+	public static void run()
 	{
-		return distance(0, 0);
-	}
-	
-	public double distance(double a, double b)
-	{
-		Point other = new Point();
+		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
-		other.x = a;
-		other.y = b;
+		for (;;) {
+			System.out.print("Para kaç kez atılsın:");
+			int n = Integer.parseInt(kb.nextLine());
+			
+			if (n <= 0)
+				break;
+			
+			CoinTailProbabilitySimulation simulation = new CoinTailProbabilitySimulation();
+			
+			simulation.run(n);
+			System.out.printf("Yazı gelme olasılığı:%f%n", simulation.p);
+		}
+	}
+}
+
+class CoinTailProbabilitySimulation {
+	public double p;
+	
+	public static int calculateTailCount(int n)
+	{
+		java.util.Random r = new java.util.Random();
+		int count = 0;
 		
-		return distance(other);
+		for (int i = 0; i < n; ++i)
+			if (r.nextBoolean())
+				++count;
+		
+		return count;
 	}
 	
-	public double distance(Point other)
-	{
-		return Math.sqrt(Math.pow(x - other.x, 2) + Math.pow(y - other.y, 2));
-	}
 	
-	public void offset(double dxy)
+	public void run(int n)
 	{
-		offset(dxy, dxy);
-	}
-	
-	public void offset(double dx, double dy)
-	{
-		x += dx;
-		y += dy;
-	}
-	
-	public void print()
-	{
-		System.out.printf("(%.2f, %.2f)%n", x, y);
+		p = calculateTailCount(n) / (double)n;
 	}
 }
 
