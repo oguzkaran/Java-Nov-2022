@@ -1,100 +1,46 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Aşağıdaki örneği inceleyiniz
+	ctor aşağıdaki özelliklere sahp bir metottur:
+	- Sınıfı yazan programcı, sınıfa hiç bir ctor yazmazsa, derleyici parametresiz ctor'u (default ctor) public ve
+	içi boş olarak otomatik olarak yazar
+	
+	- Sınıfı yazan programcı en az bir tane ctor yazarsa, default ctor derleyici tarafından yazılmaz. Artık default 
+	ctor'un yazılmayacağına programcı karar verecektir
+	
+	- ctor overload edilebilir (constructor overloading)
+	
+	- Sınıfın ctor'u sınıf ismi ile aynı olan ve geri dönüş değeri kavramı olmayan bir metottur. Geri dönüş değeri
+	bilgisi yazılmaz. void da yazılmaz. Sınıf ismi ile aynı isimde bir metot yazılıp geri dönüş değeri bilgisi yazılırsa
+	artık bu metot ctor olmaz. Şüphesiz böyle bir metot yazılmamalıdır
+	
+	- ctor non-static bir metottur
+	
+	- ctor new operatörüğ ile nesne yaratılmasın sırasında çağrılır. Hangi ctor'un çağrılacağı derleme zamanında 
+	new operatörü ile kullanımda geçilen argümanlara göre "method overload resolution" kuralları ile belirlenir
+	
+	- 
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{		
-		RandomPointGeneratorApp.run();		
-	}
-}
-
-class RandomPointGeneratorApp {
-	public static void run()
-	{
-		java.util.Random r = new java.util.Random();
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		
-		System.out.print("Tohum değerini giriniz:");
-		long seed = Long.parseLong(kb.nextLine());
-		
-		r.setSeed(seed);
-		
-		System.out.print("Minimum değeri giriniz:");
-		double min = Double.parseDouble(kb.nextLine());
-		
-		System.out.print("Sınır değeri giriniz:");
-		double bound = Double.parseDouble(kb.nextLine());
-		
-	
-		for (;;) {
-			System.out.print("Kaç tane nokta üretmek istersiniz?");
-			int count = Integer.parseInt(kb.nextLine());
-			if (count <= 0)
-				break;
-			
-			System.out.println("-------------------------------");
-			while (count-- > 0) {
-				Point p = RandomPointGenerator.createRandomPoint(r, min, bound);
-				
-				p.print();
-			}
-			
-			System.out.println("-------------------------------");
-		}
 		
 	}
 }
 
-class RandomPointGenerator {
-	//...
-	public static Point createRandomPoint(java.util.Random random, double min, double bound)
+class Sample {
+	public Sample(int a)
 	{
-		Point p = new Point();
 		
-		p.x = random.nextDouble(min, bound);
-		p.y = random.nextDouble(min, bound);
+	}
+	
+	public Sample(double a)
+	{
 		
-		return p;
+	}
+	
+	public void foo()
+	{
+		
 	}
 }
-
-class Point {
-	public double x, y; 
-	
-	//...
-	
-	public double distance()
-	{
-		return distance(0, 0);
-	}
-	
-	public double distance(double a, double b)
-	{
-		return Math.sqrt(Math.pow(x - a, 2) + Math.pow(y - b, 2));
-	}
-	
-	public double distance(Point other)
-	{
-		return distance(other.x, other.y);
-	}
-	
-	public void offset(double dxy)
-	{
-		offset(dxy, dxy);
-	}
-	
-	public void offset(double dx, double dy)
-	{
-		x += dx;
-		y += dy;
-	}
-	
-	public void print()
-	{
-		System.out.printf("(%.2f, %.2f)%n", x, y);
-	}
-}
-
-
