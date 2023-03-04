@@ -1,55 +1,100 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: İki zar atıldığında zarların çift gelmesi (ikisinin de aynı) olasılığını yaklaşık olarak 
-	hesaplayan simülasyon programını yazınız
+	Aşağıdaki örneği inceleyiniz
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{		
-		CoinTailProbabilitySimulationApp.run();
+		RandomPointGeneratorApp.run();		
 	}
 }
 
-class CoinTailProbabilitySimulationApp {
+class RandomPointGeneratorApp {
 	public static void run()
 	{
+		java.util.Random r = new java.util.Random();
 		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
+		System.out.print("Tohum değerini giriniz:");
+		long seed = Long.parseLong(kb.nextLine());
+		
+		r.setSeed(seed);
+		
+		System.out.print("Minimum değeri giriniz:");
+		double min = Double.parseDouble(kb.nextLine());
+		
+		System.out.print("Sınır değeri giriniz:");
+		double bound = Double.parseDouble(kb.nextLine());
+		
+	
 		for (;;) {
-			System.out.print("Para kaç kez atılsın:");
-			int n = Integer.parseInt(kb.nextLine());
-			
-			if (n <= 0)
+			System.out.print("Kaç tane nokta üretmek istersiniz?");
+			int count = Integer.parseInt(kb.nextLine());
+			if (count <= 0)
 				break;
 			
-			CoinTailProbabilitySimulation simulation = new CoinTailProbabilitySimulation();
+			System.out.println("-------------------------------");
+			while (count-- > 0) {
+				Point p = RandomPointGenerator.createRandomPoint(r, min, bound);
+				
+				p.print();
+			}
 			
-			simulation.run(n);
-			System.out.printf("Yazı gelme olasılığı:%f%n", simulation.p);
+			System.out.println("-------------------------------");
 		}
+		
 	}
 }
 
-class CoinTailProbabilitySimulation {
-	public double p;
-	
-	public static int calculateTailCount(int n)
+class RandomPointGenerator {
+	//...
+	public static Point createRandomPoint(java.util.Random random, double min, double bound)
 	{
-		java.util.Random r = new java.util.Random();
-		int count = 0;
+		Point p = new Point();
 		
-		for (int i = 0; i < n; ++i)
-			if (r.nextBoolean())
-				++count;
+		p.x = random.nextDouble(min, bound);
+		p.y = random.nextDouble(min, bound);
 		
-		return count;
-	}
-	
-	
-	public void run(int n)
-	{
-		p = calculateTailCount(n) / (double)n;
+		return p;
 	}
 }
+
+class Point {
+	public double x, y; 
+	
+	//...
+	
+	public double distance()
+	{
+		return distance(0, 0);
+	}
+	
+	public double distance(double a, double b)
+	{
+		return Math.sqrt(Math.pow(x - a, 2) + Math.pow(y - b, 2));
+	}
+	
+	public double distance(Point other)
+	{
+		return distance(other.x, other.y);
+	}
+	
+	public void offset(double dxy)
+	{
+		offset(dxy, dxy);
+	}
+	
+	public void offset(double dx, double dy)
+	{
+		x += dx;
+		y += dy;
+	}
+	
+	public void print()
+	{
+		System.out.printf("(%.2f, %.2f)%n", x, y);
+	}
+}
+
 
