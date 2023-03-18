@@ -1,34 +1,18 @@
 /*----------------------------------------------------------------------------------------------------------------------
-  	Sınıf Çalışması: Parametresi ile aldığı bir yazının ilk harfi büyük geri kalan harfleri küçük olacak şekilde
-  	ve harf dışı karakter de aynı kalacak şekilde bir yazı döndüren capitalize isimli metodu StringUtil metodu 
-  	içerisinde yazınız ve aşağıdaki kod ile test ediniz.
-  	Örnek jAVA Programcısı çok çalışmalıdır -> Java programcısı çok çalışmalıdır
+  	Sınıf Çalışması: Parametresi ile aldığı bir sadece başındaki boşluk karakterlerini atan trimLeading ve sadece
+  	sonundaki boşluk karakterlerini atan trimTrailing isimli metotları StringUtil sınıfı içerisinde yazınız ve 
+  	aşağıdaki kod ile test ediniz
 ---------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{	
-		java.util.Scanner kb = new java.util.Scanner(System.in);
-		
-		System.out.print("Bir yazı giriniz:");
-		String str = kb.nextLine();
-		
-		int len = str.length();
-		
-		for (int i = 0; i < len; ++i) {
-			char ch = str.charAt(i);
-			
-			ch = Character.isLowerCase(ch) ? Character.toUpperCase(ch) : Character.toLowerCase(ch);
-			
-			System.out.printf("%s", ch);
-		}
-		
-		System.out.println();
+		TrimLeadingTrailingTest.run();
 	}
 }
 
-class CapitalizeTest {
+class TrimLeadingTrailingTest {
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
@@ -37,10 +21,12 @@ class CapitalizeTest {
 			System.out.print("Bir yazı giriniz:");
 			String s = kb.nextLine();
 			
-			System.out.printf("[%s]%n", StringUtil.capitalize(s));
-			
 			if ("elma".equals(s))
 				break;
+			
+			System.out.printf("(%s)%n", s);
+			System.out.printf("(%s)%n", StringUtil.trimLeading(s));
+			System.out.printf("(%s)%n", StringUtil.trimTrailing(s));
 		}
 		
 		System.out.println("Tekrar yapıyor musunuz?");
@@ -49,7 +35,12 @@ class CapitalizeTest {
 
 
 class StringUtil {
-	public static String capitalize(String s)
+	public static String trimLeading(String s)
+	{
+		//TODO:
+	}
+	
+	public static String trimTrailing(String s)
 	{
 		//TODO:
 	}
