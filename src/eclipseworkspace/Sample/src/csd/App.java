@@ -1,52 +1,59 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Yukarıdaki örnek için Ingilizce alfabedeki karakterler karakter tablosundan standart olarak sıralı 
-	olduğundan isPangramEN metodu aşağıdaki gibi de yazılabilir. Şüphesiz yukarıdaki yaklaşım daha geneldir
+	Sınıf Çalışması: Paramatresi ile aldığı int türden bir n değeri için n tane rasgele üretilmiş Türkçe
+	karakterden oluşan bir yazı döndüren getRandomtextTR ile n tane rasgele üretilmiş İngilizce karakterden oluşan
+	bir yazı döndüren getRandomTextEN metotlarını yazınız ve aşağıdaki kod ile test ediniz
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
 class App {
 	public static void main(String [] args)	
 	{	
-		IsPangramTest.run();
+		GetRandomTextTRENTest.run();
 	}
 }
 
-class IsPangramTest {
+class GetRandomTextTRENTest {
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
+		java.util.Random r = new java.util.Random();
 		
-		IsPangramENTest.run(kb);
-	}
-}
-
-class IsPangramENTest {
-	public static void run(java.util.Scanner kb)
-	{
 		for (;;) {
-			System.out.print("Input a text:");
-			String s = kb.nextLine();
+			System.out.print("Bir sayı giriniz:");
+			int n = Integer.parseInt(kb.nextLine());
 			
-			if ("quit".equals(s))
+			if (n <= 0))
 				break;
 			
-			System.out.println(StringUtil.isPangramEN(s) ? "Pangram" : "Not a Pangram");
+			System.out.printf("Şifre:%s%n", StringUtil.getRandomTextTR(r, n));
+			System.out.printf("Password:%s%n", StringUtil.getRandomTextEN(r, n));
 		}
 	}
 }
 
 
 class StringUtil {
-	public static boolean isPangramEN(String s)
+	public static String getRandomTextTR(java.util.Random r, int n)
 	{
-		s = s.toLowerCase();
 		
-		for (int i = 0; i < 26; ++i)
-			if (!s.contains((char)('a' + i) + ""))
-				return false;
+	}
+	
+	public static String getRandomTextTR(int n)
+	{
+		return getRandomTextTR(new java.util.Random(), n);
+	}
+	
+	 
+	
+	public static String getRandomTextEN(java.util.Random r, int n)
+	{
 		
-		return true;
-	}	
+	}
+	
+	public static String getRandomTextEN(int n)
+	{
+		return getRandomTextEN(new java.util.Random(), n);
+	}
 }
 
 
