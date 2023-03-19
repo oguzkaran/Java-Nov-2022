@@ -1,14 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı bir yazının Türkçe pangram olup olmadığını test eden isPangramTR
-	ve İngilizce pangram olup olmadığını test eden isPangramEN metotlarını StringUtil sınıfı içerisinde yazınız
-	ve aşağıdaki kod ile test ediniz.
-	
-	Pangram: İçerisinde özel isim olmayan ve ilgili dilin alfabesindeki tüm karakterleri içeren anlamlı cümlelere denir
-	
-	Parogramda özel isim ve anlamlı olması kontrolü yapılmayacaktır
-	
-	İngilizce: The quick brown fox jumps over the lazy dog
-	Türkçe: Pijamalı hasta yağız şoföre çabucak güvendi
+	Yukarıdaki örnek için Ingilizce alfabedeki karakterler karakter tablosundan standart olarak sıralı 
+	olduğundan isPangramEN metodu aşağıdaki gibi de yazılabilir. Şüphesiz yukarıdaki yaklaşım daha geneldir
 -----------------------------------------------------------------------------------------------------------------------*/
 package csd;
 
@@ -24,7 +16,6 @@ class IsPangramTest {
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
 		
-		IsPangramTRTest.run(kb);
 		IsPangramENTest.run(kb);
 	}
 }
@@ -39,37 +30,23 @@ class IsPangramENTest {
 			if ("quit".equals(s))
 				break;
 			
-			System.out.println(StringUtil.isPangramEN(s) ? "Pangram" : "No a Pangram");
-		}
-	}
-}
-
-class IsPangramTRTest {
-	public static void run(java.util.Scanner kb)
-	{
-		for (;;) {
-			System.out.print("Bir yazı giriniz:");
-			String s = kb.nextLine();
-			
-			if ("elma".equals(s))
-				break;
-			
-			System.out.println(StringUtil.isPangramTR(s) ? "Pangram" : "Pangram değil");
+			System.out.println(StringUtil.isPangramEN(s) ? "Pangram" : "Not a Pangram");
 		}
 	}
 }
 
 
 class StringUtil {
-	public static boolean isPangramTR(String s)
-	{
-		//TODO:
-	}
-	
 	public static boolean isPangramEN(String s)
 	{
-		//TODO:
-	}
+		s = s.toLowerCase();
+		
+		for (int i = 0; i < 26; ++i)
+			if (!s.contains((char)('a' + i) + ""))
+				return false;
+		
+		return true;
+	}	
 }
 
 
