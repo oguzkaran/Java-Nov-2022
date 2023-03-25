@@ -6,6 +6,6 @@ package csd;
 class App {
 	public static void main(String [] args) 
 	{	
-		int a;
+		msd.Sample.foo();
 	}
 }
