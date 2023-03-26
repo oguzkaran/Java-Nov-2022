@@ -10,6 +10,8 @@
 ------------------------------------------------------------*/
 package org.csystem.util.string;
 
+import java.util.*;
+
 public class StringUtil {
 	public static String capitalize(String s)
 	{
@@ -31,7 +33,7 @@ public class StringUtil {
 		return countString(s1.toLowerCase(), s2.toLowerCase());
 	}
 
-	public static String getRandomText(java.util.Random r, int n, String text) 
+	public static String getRandomText(Random r, int n, String text) 
 	{
 		String str = "";
 		int len = text.length();
@@ -44,20 +46,20 @@ public class StringUtil {
 
 	public static String getRandomTextEN(int n) 
 	{
-		return getRandomTextEN(new java.util.Random(), n);
+		return getRandomTextEN(new Random(), n);
 	}
 
-	public static String getRandomTextEN(java.util.Random r, int n) 
+	public static String getRandomTextEN(Random r, int n) 
 	{
 		return getRandomText(r, n, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXYZ");
 	}
 
 	public static String getRandomTextTR(int n) 
 	{
-		return getRandomTextTR(new java.util.Random(), n);
+		return getRandomTextTR(new Random(), n);
 	}
 
-	public static String getRandomTextTR(java.util.Random r, int n) 
+	public static String getRandomTextTR(Random r, int n) 
 	{
 		return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
 	}
