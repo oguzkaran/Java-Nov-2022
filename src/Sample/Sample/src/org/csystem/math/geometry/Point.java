@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: Point.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 25.03.2023
+	LAST UPDATE		: 01.04.2023
 	
 	Point class that represents a point in cartesian plane
 	
@@ -9,6 +9,9 @@
 	All Rights Free
 ------------------------------------------------------------*/
 package org.csystem.math.geometry;
+
+import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
 
 public class Point {
 	public double x, y; 
@@ -35,7 +38,7 @@ public class Point {
 	
 	public double distance(double a, double b)
 	{
-		return Math.sqrt(Math.pow(x - a, 2) + Math.pow(y - b, 2));
+		return sqrt(pow(x - a, 2) + pow(y - b, 2));
 	}
 	
 	public double distance(Point other)
