@@ -44,7 +44,6 @@ public class ArrayUtil {
         System.out.println();
     }
 
-
     public static void reverse(int [] a)
     {
         int left = 0;
@@ -77,6 +76,14 @@ public class ArrayUtil {
     public static void swap(int [] a, int i, int k)
     {
         int temp = a[i];
+
+        a[i] = a[k];
+        a[k] = temp;
+    }
+
+    public static void swap(char [] a, int i, int k)
+    {
+        char temp = a[i];
 
         a[i] = a[k];
         a[k] = temp;
