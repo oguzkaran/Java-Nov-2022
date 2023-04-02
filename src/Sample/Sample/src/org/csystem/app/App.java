@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarının toplamına geri dönen sum isimli
-	metodu ArrayUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir dizinin elemanlarını test yüz eden reverse isimli metodu
+	başka bir dizi kullabnmadan yazınız ve aşağıdaki kod ile test ediniz
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
@@ -25,7 +25,7 @@ class App {
 			int[] a = getRandomArray(random, count, 0, 99);
 
 			System.out.println("--------------------------------------------------------------------------------------");
-			print(a);
+			print(3, a);
 			System.out.println("--------------------------------------------------------------------------------------");
 		}
 

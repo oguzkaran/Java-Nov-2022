@@ -31,10 +31,23 @@ public class ArrayUtil {
 
     public static void print(int [] a)
     {
+        print(1, a);
+    }
+
+    public static void print(int n, int [] a)
+    {
+        String fmt = String.format("%%0%dd ", n);
+
         for (int i = 0; i < a.length; ++i)
-            System.out.printf("%d ", a[i]);
+            System.out.printf(fmt, a[i]);
 
         System.out.println();
+    }
+
+
+    public static void reverse(int [] a)
+    {
+        //TODO:
     }
 
     public static int sum(int [] a)
