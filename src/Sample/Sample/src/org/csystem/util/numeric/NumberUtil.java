@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: NumberUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 01.04.2023
+	LAST UPDATE		: 02.04.2023
 	
 	Utility class for numeric operations
 	
@@ -75,6 +75,11 @@ public class NumberUtil {
 		}
 
 		return val;
+	}
+
+	public static int [] getDigits(long val)
+	{
+		//TODO:
 	}
 	
 	public static int getHardyRamanujanCount(int n)
