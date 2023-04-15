@@ -1,11 +1,39 @@
 package org.csystem.random.lottery.numericlottery;
 
-import org.csystem.util.array.ArrayUtil;
-
 import java.util.Random;
 
 public class NumericLottery {
     public Random random;
+
+    public static int [] getNumbers(boolean [] flags)
+    {
+        int [] numbers = new int[6];
+        int index = 0;
+
+        for (int i = 1; i < 50; ++i)
+            if (flags[i])
+                numbers[index++] = i;
+
+        return numbers;
+    }
+
+    public boolean [] getFlags()
+    {
+        boolean [] flags = new boolean[50];
+
+        for (int i = 0; i < 6; ++i) {
+            int val;
+
+            for (;;) {
+                val = random.nextInt(1, 50);
+                if (!flags[val])
+                    break;
+            }
+            flags[val] = true;
+        }
+
+        return flags;
+    }
 
     public NumericLottery()
     {
@@ -19,25 +47,6 @@ public class NumericLottery {
 
     public int [] getNumbers()
     {
-        int [] numbers = new int[6];
-
-        for (int i = 0; i  < 6; ++i) {
-            boolean repeat;
-
-            do {
-                repeat = false;
-                numbers[i] = random.nextInt(1, 50);
-
-                for (int k = 0; k < i; ++k)
-                    if (numbers[i] == numbers[k]) {
-                        repeat = true;
-                        break;
-                    }
-            } while (repeat);
-        }
-
-        ArrayUtil.bubbleSort(numbers);
-
-        return numbers;
+        return getNumbers(getFlags());
     }
 }
