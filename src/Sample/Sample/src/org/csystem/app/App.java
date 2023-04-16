@@ -11,10 +11,7 @@ package org.csystem.app;
 class App {
 	public static void main(String [] args)
 	{
-		String [] countries = {"Turkey", "England", "Swiss", "Sweden"};
 
-		for (int i = 0; i < countries.length; ++i)
-			System.out.println(countries[i]);
 	}
 }
 

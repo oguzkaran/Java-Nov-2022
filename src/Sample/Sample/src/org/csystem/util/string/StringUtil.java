@@ -127,6 +127,16 @@ public class StringUtil {
 		return isPangram(s.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");
 	}
 
+	public static String join(String [] str, String delimiter)
+	{
+		throw new UnsupportedOperationException("TODO:");
+	}
+
+	public static String join(String [] str, char delimiter)
+	{
+		return join(str, String.valueOf(delimiter));
+	}
+
 	public static String padLeading(String s, int len)
 	{
 		return padLeading(s, len, ' ');

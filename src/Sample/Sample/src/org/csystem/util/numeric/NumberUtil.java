@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: NumberUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 02.04.2023
+	LAST UPDATE		: 16.04.2023
 	
 	Utility class for numeric operations
 	
@@ -10,10 +10,26 @@
 ------------------------------------------------------------*/
 package org.csystem.util.numeric;
 
+import java.util.Dictionary;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.log10;
 
 public class NumberUtil {
+
+	public static int [] getDigits(long val, int n)
+	{
+		int [] digits = new int[val == 0 ? 1 : (int)(Math.log10(Math.abs(val)) / n) + 1];
+		int powOfTen = (int)pow(10, n);
+
+		val = abs(val);
+
+		for (int i = digits.length - 1; i >= 0; digits[i] = (int)(val % powOfTen), val /= powOfTen, --i)
+			;
+
+		return digits;
+	}
+
 	public static boolean areFriends(int a, int b)
 	{
 		return sumFactors(a) == b && sumFactors(b) == a;
@@ -78,19 +94,17 @@ public class NumberUtil {
 
 	public static int [] getDigits(long val)
 	{
-		int [] digits = new int[countDigits(val)];
+		return getDigits(val, 1);
+	}
 
-		val = abs(val);
-
-		for (int i = digits.length - 1; i >= 0; digits[i--] = (int)(val % 10), val /= 10)
-			;
-
-		return digits;
+	public static int [] getDigitsInTwos(long val)
+	{
+		return getDigits(val, 2);
 	}
 
 	public static int [] getDigitsInThrees(long val)
 	{
-		//TODO:
+		return getDigits(val, 3);
 	}
 	
 	public static int getHardyRamanujanCount(int n)
