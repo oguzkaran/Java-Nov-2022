@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: ArrayUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 15.04.2023
+	LAST UPDATE		: 16.04.2023
 
 	Utility class for array operations
 
@@ -13,7 +13,6 @@ package org.csystem.util.array;
 import java.util.Random;
 
 public class ArrayUtil {
-
     public static void bubbleSortAscending(int [] a)
     {
         for (int i = 0; i < a.length - 1; ++i)
@@ -81,10 +80,34 @@ public class ArrayUtil {
             bubbleSortAscending(a);
     }
 
+    public static void drawHistogram(int [] data, int n, char ch)
+    {
+        int maxVal = max(data);
+
+        for (int i = 0; i < data.length; ++i) {
+            int count = data[i] * n / maxVal;
+
+            while (count-- > 0)
+                System.out.print(ch);
+
+            System.out.println();
+        }
+    }
+
     public static void fillRandomArray(Random random, int [] a, int min, int bound)
     {
         for (int i = 0; i < a.length; ++i)
             a[i] = random.nextInt(min, bound);
+    }
+
+    public static int [] getHistogramData(int [] a, int n)
+    {
+        int [] counts = new int[n + 1];
+
+        for (int i = 0; i < a.length; ++i)
+            ++counts[a[i]];
+
+        return counts;
     }
 
     public static int [] getRandomArray(Random random, int count, int min, int bound)
@@ -94,6 +117,26 @@ public class ArrayUtil {
         fillRandomArray(random, a, min, bound);
 
         return a;
+    }
+
+    public static int max(int [] a)
+    {
+        int result = a[0];
+
+        for (int i = 1; i < a.length; ++i)
+            result = Math.max(result, a[i]);
+
+        return result;
+    }
+
+    public static int min(int [] a)
+    {
+        int result = a[0];
+
+        for (int i = 1; i < a.length; ++i)
+            result = Math.min(result, a[i]);
+
+        return result;
     }
 
     public static void print(int [] a)
@@ -112,6 +155,15 @@ public class ArrayUtil {
     }
 
     public static void reverse(int [] a)
+    {
+        int left = 0;
+        int right = a.length - 1;
+
+        while (left < right)
+            swap(a, left++, right--);
+    }
+
+    public static void reverse(char [] a)
     {
         int left = 0;
         int right = a.length - 1;
