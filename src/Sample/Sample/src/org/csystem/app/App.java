@@ -1,30 +1,20 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Yukarıdaki problemin bir çözümü aşağıdaki gibi olabilir. Şüphesiz çözüm senaryoya bağlıdır
+	Sınıf Çalışması: Parametresi ile aldığı long bir sayının en fazla üç basamaklı ayrılmış sayılarından olıuşan diziyi
+	döndüren getDigitsInThrees metodunu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
+	Örnek: 1234567 -> 1 234 567
+	Örnek: 345 -> 345
+	Örnek: 234567 -> 234 567
+	Örnek: 1234 -> 1 234
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
 class App {
 	public static void main(String [] args)
 	{
-		Sample [] samples = new Sample[10];
+		String [] countries = {"Turkey", "England", "Swiss", "Sweden"};
 
-		for (int i = 0; i < samples.length; ++i)
-			samples[i] = new Sample(i * 10);
-
-		for (int i = 0; i < samples.length; ++i)
-			System.out.printf("%d ", samples[i].a);
-
-		System.out.println();
+		for (int i = 0; i < countries.length; ++i)
+			System.out.println(countries[i]);
 	}
-}
-
-class Sample {
-	public int a;
-
-	public Sample(int x)
-	{
-		a = x;
-	}
-	//...
 }
 

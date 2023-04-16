@@ -87,6 +87,11 @@ public class NumberUtil {
 
 		return digits;
 	}
+
+	public static int [] getDigitsInThrees(long val)
+	{
+		//TODO:
+	}
 	
 	public static int getHardyRamanujanCount(int n)
 	{
