@@ -35,6 +35,13 @@ public class DateUtil {
         System.out.printf("%d%s %s %d %s%n", day, getDaySuffix(day), monthsEN[month], year, daysOfWeekEN[dayOfWeek]);
     }
 
+    public static String getDateStrTR(int day, int month, int year)
+    {
+        int dayOfWeek = getDayOfWeek(day, month, year);
+
+        return String.format("%d %s %d %s", day, monthsTR[month], year, daysOfWeekTR[dayOfWeek]);
+    }
+
     public static String getDaySuffix(int day)
     {
         return switch (day) {

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: StringUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 16.04.2023
+	LAST UPDATE		: 29.04.2023
 	
 	Utility class for string operations
 	
@@ -127,14 +127,31 @@ public class StringUtil {
 		return isPangram(s.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");
 	}
 
+	public static String join(String [] str, String delimiter, boolean skipBlanks)
+	{
+		String result = "";
+
+		for (int i = 0; i < str.length; ++i) {
+			if (skipBlanks && str[i].isBlank())
+				continue;
+			result += str[i] + delimiter;
+		}
+
+		return result.substring(0, result.length() - delimiter.length());
+	}
 	public static String join(String [] str, String delimiter)
 	{
-		throw new UnsupportedOperationException("TODO:");
+		return join(str, delimiter, false);
 	}
 
 	public static String join(String [] str, char delimiter)
 	{
 		return join(str, String.valueOf(delimiter));
+	}
+
+	public static String join(String [] str, char delimiter, boolean skipBlanks)
+	{
+		return join(str, String.valueOf(delimiter), skipBlanks);
 	}
 
 	public static String padLeading(String s, int len)
