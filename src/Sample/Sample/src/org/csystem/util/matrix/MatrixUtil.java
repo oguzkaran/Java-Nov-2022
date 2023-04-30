@@ -21,18 +21,9 @@ public class MatrixUtil {
             ArrayUtil.fillRandomArray(random, a[i], min, bound);
     }
 
-    public static boolean isMatrix(int [][] a)
-    {
-        for (int i = 1; i < a.length; ++i)
-            if (a[0].length != a[i].length)
-                return false;
-
-        return true;
-    }
-
     public static boolean isSquareMatrix(int [][] a)
     {
-        //TODO:
+        return isMatrix(a) && a.length == a[0].length;
     }
 
     public static int [][] getRandomMatrix(Random random, int m, int n, int min, int bound)
@@ -43,4 +34,25 @@ public class MatrixUtil {
 
         return a;
     }
+
+    public static int [][] getRandomSquareMatrix(Random random, int n, int min, int bound)
+    {
+        return getRandomMatrix(random, n, n, min, bound);
+    }
+
+    public static boolean isMatrix(int [][] a)
+    {
+        for (int i = 1; i < a.length; ++i)
+            if (a[0].length != a[i].length)
+                return false;
+
+        return true;
+    }
+
+
+    public static int [] [] transposed(int [][] a)
+    {
+        //TODO:
+    }
+
 }
