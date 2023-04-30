@@ -154,6 +154,17 @@ public class ArrayUtil {
         System.out.println();
     }
 
+    public static void print(int [][] a)
+    {
+        print(1, a);
+    }
+
+    public static void print(int n, int [][] a)
+    {
+        for (int i = 0; i < a.length; ++i)
+            print(n, a[i]);
+    }
+
     public static void reverse(int [] a)
     {
         int left = 0;
