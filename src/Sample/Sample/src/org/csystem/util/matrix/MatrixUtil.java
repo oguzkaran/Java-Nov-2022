@@ -15,6 +15,12 @@ import org.csystem.util.array.ArrayUtil;
 import java.util.Random;
 
 public class MatrixUtil {
+
+    public static int [][] addMatrices(int [][] a, int [][] b)
+    {
+        throw new UnsupportedOperationException("TODO");
+    }
+
     public static void fillRandomMatrix(Random random, int [][] a, int min, int bound)
     {
         for (int i = 0; i < a.length; ++i)
@@ -49,10 +55,24 @@ public class MatrixUtil {
         return true;
     }
 
+    public static int [][] subtractMatrices(int [][] a, int [][] b)
+    {
+        throw new UnsupportedOperationException("TODO");
+    }
+
+    public static int sumDiagonal(int [][] a)
+    {
+        throw new UnsupportedOperationException("TODO");
+    }
 
     public static int [] [] transposed(int [][] a)
     {
-        //TODO:
-    }
+        int [][] t = new int[a[0].length][a.length];
 
+        for (int i = 0; i < a.length; ++i)
+            for (int j = 0; j < a[i].length; ++j)
+                t[j][i] = a[i][j];
+
+        return t;
+    }
 }

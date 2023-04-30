@@ -18,8 +18,12 @@ public class NumericLotteryApp {
             if (n <= 0)
                 break;
 
-            while (n-- > 0)
-                ArrayUtil.print(2, lottery.getNumbers());
+            ArrayUtil.print(2, lottery.getNumbers(n));
         }
+    }
+
+    public static void main(String[] args)
+    {
+        run();
     }
 }
