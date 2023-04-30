@@ -23,6 +23,15 @@ public class MatrixUtil {
 
     public static boolean isMatrix(int [][] a)
     {
+        for (int i = 1; i < a.length; ++i)
+            if (a[0].length != a[i].length)
+                return false;
+
+        return true;
+    }
+
+    public static boolean isSquareMatrix(int [][] a)
+    {
         //TODO:
     }
 

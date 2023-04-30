@@ -1,6 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı bir dizi dizisi referansının bir matris olup olmadığını test eden
-	isMatrix metodunu MatrixUtil isimli sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz
+	Sınıf Çalışması: Parametresi ile aldığı bir dizi dizisi referansının bir kare matris olup olmadığını test eden
+	isSquareMatrix metodunu MatrixUtil isimli sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz. Bir matrisin
+	kare matris olması için önce matris olması gerektiğine dikkat ediniz
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 

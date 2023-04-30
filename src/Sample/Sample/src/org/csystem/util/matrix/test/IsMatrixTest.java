@@ -1,10 +1,6 @@
 package org.csystem.util.matrix.test;
 
-import org.csystem.util.array.ArrayUtil;
 import org.csystem.util.matrix.MatrixUtil;
-
-import java.util.Random;
-import java.util.Scanner;
 
 public class IsMatrixTest {
     public static void run()
