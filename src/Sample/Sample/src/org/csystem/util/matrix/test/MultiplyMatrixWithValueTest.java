@@ -25,6 +25,7 @@ public class MultiplyMatrixWithValueTest {
             ArrayUtil.print(2, a);
             System.out.printf("Value:%d%n", value);
             MatrixUtil.multiplyMatrixWithValue(a, value);
+            ArrayUtil.print(a);
 
             System.out.println("---------------------------------");
         }

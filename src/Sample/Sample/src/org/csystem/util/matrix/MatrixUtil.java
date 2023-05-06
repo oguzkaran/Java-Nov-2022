@@ -19,28 +19,18 @@ public class MatrixUtil {
     {
         int row = a.length;
         int col = a[0].length;
-        int [][] total = new int[row][col];
+        int [][] result = new int[row][col];
 
         for (int i = 0; i < row; ++i)
             for (int j = 0; j < col; ++j)
-                total[i][j] = a[i][j] + b[i][j];
+                result[i][j] = a[i][j] + b[i][j];
 
-        return total;
+        return result;
     }
 
     public static void addMatrixWithValue(int [][] a, int value)
     {
-        throw new UnsupportedOperationException("TODO:");
-    }
-
-    public static void subtractMatrixWithValue(int [][] a, int value)
-    {
-        throw new UnsupportedOperationException("TODO:");
-    }
-
-    public static void multiplyMatrixWithValue(int [][] a, int value)
-    {
-        throw new UnsupportedOperationException("TODO:");
+        ArrayUtil.addBy(a, value);
     }
 
     public static void fillRandomMatrix(Random random, int [][] a, int min, int bound)
@@ -77,17 +67,42 @@ public class MatrixUtil {
         return true;
     }
 
+    public static int [][] multiplyMatrices(int [][] a, int [][] b)
+    {
+        int row1 = a.length;
+        int col2 = b[0].length;
+        int row2 = b.length;
+        int [][] result = new int[row1][col2];
+
+        for (int i = 0; i < row1; ++i)
+            for (int j = 0; j < col2; ++j)
+                for (int k = 0; k < row2; ++k)
+                    result[i][j] += a[i][k] * b[k][j];
+
+        return result;
+    }
+
+    public static void multiplyMatrixWithValue(int [][] a, int value)
+    {
+        ArrayUtil.multiplyBy(a, value);
+    }
+
     public static int [][] subtractMatrices(int [][] a, int [][] b)
     {
         int row = a.length;
         int col = a[0].length;
-        int [][] total = new int[row][col];
+        int [][] result = new int[row][col];
 
         for (int i = 0; i < row; ++i)
             for (int j = 0; j < col; ++j)
-                total[i][j] = a[i][j] - b[i][j];
+                result[i][j] = a[i][j] - b[i][j];
 
-        return total;
+        return result;
+    }
+
+    public static void subtractMatrixWithValue(int [][] a, int value)
+    {
+        addMatrixWithValue(a, -value);
     }
 
     public static int sumDiagonal(int [][] a)

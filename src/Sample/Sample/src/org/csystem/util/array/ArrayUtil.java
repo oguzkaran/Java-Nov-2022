@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: ArrayUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 16.04.2023
+	LAST UPDATE		: 06.05.2023
 
 	Utility class for array operations
 
@@ -65,6 +65,13 @@ public class ArrayUtil {
             a[maxIndex] = a[i];
             a[i] = max;
         }
+    }
+
+    public static void addBy(int [][] a, int value)
+    {
+        for (int i = 0; i < a.length; ++i)
+            for (int k = 0; k < a[i].length; ++k)
+                a[i][k] += value;
     }
 
     public static void bubbleSort(int [] a)
@@ -139,6 +146,13 @@ public class ArrayUtil {
         return result;
     }
 
+    public static void multiplyBy(int [][] a, int value)
+    {
+        for (int i = 0; i < a.length; ++i)
+            for (int k = 0; k < a[i].length; ++k)
+                a[i][k] *= value;
+    }
+
     public static void print(int [] a)
     {
         print(1, a);
@@ -194,6 +208,11 @@ public class ArrayUtil {
             selectionSortDescending(a);
         else
             selectionSortAscending(a);
+    }
+
+    public static void subtractBy(int [][] a, int value)
+    {
+        addBy(a, -value);
     }
 
     public static int sum(int [] a)

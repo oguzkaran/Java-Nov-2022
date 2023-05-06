@@ -6,7 +6,7 @@ import org.csystem.util.matrix.MatrixUtil;
 import java.util.Random;
 import java.util.Scanner;
 
-public class AddMatrixWithValueTest {
+public class MultiplyMatricesTest {
     public static void run()
     {
         Scanner kb = new Scanner(System.in);
@@ -17,15 +17,17 @@ public class AddMatrixWithValueTest {
 
         while (count-- > 0) {
             System.out.println("---------------------------------");
-            int m = random.nextInt(2, 10);
-            int n = random.nextInt(2, 10);
-            int value = random.nextInt(-10, 11);
-            int[][] a = MatrixUtil.getRandomMatrix(random, m, n, 0, 100);
+            int m = random.nextInt(2, 6);
+            int n = random.nextInt(2, 6);
+            int k = random.nextInt(2, 6);
+            int[][] a = MatrixUtil.getRandomMatrix(random, m, n, 0, 11);
+            int[][] b = MatrixUtil.getRandomMatrix(random, n, k, 0, 11);
 
             ArrayUtil.print(2, a);
-            System.out.printf("Value:%d%n", value);
-            MatrixUtil.addMatrixWithValue(a, value);
-            ArrayUtil.print(2, a);
+            System.out.println("+");
+            ArrayUtil.print(2, b);
+            System.out.println("=");
+            ArrayUtil.print(3, MatrixUtil.multiplyMatrices(a, b));
             System.out.println("---------------------------------");
         }
     }

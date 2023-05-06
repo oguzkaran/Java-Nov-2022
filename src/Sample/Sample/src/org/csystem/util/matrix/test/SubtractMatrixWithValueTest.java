@@ -25,6 +25,7 @@ public class SubtractMatrixWithValueTest {
             ArrayUtil.print(2, a);
             System.out.printf("Value:%d%n", value);
             MatrixUtil.subtractMatrixWithValue(a, value);
+            ArrayUtil.print(a);
 
             System.out.println("---------------------------------");
         }
