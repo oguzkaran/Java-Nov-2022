@@ -1,8 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Parametresi ile aldığı int türden iki matrisin toplamından oluşan matrise geri dönen addMatrices
-	metodunu MatrixUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
-	Açıklamalar:
-		- Metot matris kontrolü ve matrislerin toplanıp toplanmayacağı kontrolünü yapmayacaktır
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir matrisin tüm elemanlarını ikinci parametresi ile aldığı intü
+	türden sayı ile toplayan addMatrixWithValue metodunu yazınız ve aşağıdaki kod ile test ediniz
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 

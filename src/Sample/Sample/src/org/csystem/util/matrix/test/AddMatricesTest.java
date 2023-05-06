@@ -26,7 +26,7 @@ public class AddMatricesTest {
             System.out.println("+");
             ArrayUtil.print(2, b);
             System.out.println("=");
-            ArrayUtil.print(2, MatrixUtil.addMatrices(a, b));
+            ArrayUtil.print(3, MatrixUtil.addMatrices(a, b));
             System.out.println("---------------------------------");
         }
     }

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: MatrixUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 30.04.2023
+	LAST UPDATE		: 06.05.2023
 
 	Utility class for matrix operations
 
@@ -15,10 +15,32 @@ import org.csystem.util.array.ArrayUtil;
 import java.util.Random;
 
 public class MatrixUtil {
-
     public static int [][] addMatrices(int [][] a, int [][] b)
     {
-        throw new UnsupportedOperationException("TODO");
+        int row = a.length;
+        int col = a[0].length;
+        int [][] total = new int[row][col];
+
+        for (int i = 0; i < row; ++i)
+            for (int j = 0; j < col; ++j)
+                total[i][j] = a[i][j] + b[i][j];
+
+        return total;
+    }
+
+    public static void addMatrixWithValue(int [][] a, int value)
+    {
+        throw new UnsupportedOperationException("TODO:");
+    }
+
+    public static void subtractMatrixWithValue(int [][] a, int value)
+    {
+        throw new UnsupportedOperationException("TODO:");
+    }
+
+    public static void multiplyMatrixWithValue(int [][] a, int value)
+    {
+        throw new UnsupportedOperationException("TODO:");
     }
 
     public static void fillRandomMatrix(Random random, int [][] a, int min, int bound)
@@ -57,12 +79,25 @@ public class MatrixUtil {
 
     public static int [][] subtractMatrices(int [][] a, int [][] b)
     {
-        throw new UnsupportedOperationException("TODO");
+        int row = a.length;
+        int col = a[0].length;
+        int [][] total = new int[row][col];
+
+        for (int i = 0; i < row; ++i)
+            for (int j = 0; j < col; ++j)
+                total[i][j] = a[i][j] - b[i][j];
+
+        return total;
     }
 
     public static int sumDiagonal(int [][] a)
     {
-        throw new UnsupportedOperationException("TODO");
+        int total = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            total += a[i][i];
+
+        return total;
     }
 
     public static int [] [] transposed(int [][] a)

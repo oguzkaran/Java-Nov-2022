@@ -6,7 +6,7 @@ import org.csystem.util.matrix.MatrixUtil;
 import java.util.Random;
 import java.util.Scanner;
 
-public class SubtractMatricesTest {
+public class SubtractMatrixWithValueTest {
     public static void run()
     {
         Scanner kb = new Scanner(System.in);
@@ -19,14 +19,13 @@ public class SubtractMatricesTest {
             System.out.println("---------------------------------");
             int m = random.nextInt(2, 10);
             int n = random.nextInt(2, 10);
+            int value = random.nextInt(-10, 11);
             int[][] a = MatrixUtil.getRandomMatrix(random, m, n, 0, 100);
-            int[][] b = MatrixUtil.getRandomMatrix(random, m, n, 0, 100);
 
             ArrayUtil.print(2, a);
-            System.out.println("-");
-            ArrayUtil.print(2, b);
-            System.out.println("=");
-            ArrayUtil.print(4, MatrixUtil.subtractMatrices(a, b));
+            System.out.printf("Value:%d%n", value);
+            MatrixUtil.subtractMatrixWithValue(a, value);
+
             System.out.println("---------------------------------");
         }
     }
