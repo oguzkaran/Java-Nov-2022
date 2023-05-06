@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: StringUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 29.04.2023
+	LAST UPDATE		: 06.05.2023
 	
 	Utility class for string operations
 	
@@ -131,10 +131,11 @@ public class StringUtil {
 	{
 		String result = "";
 
-		for (int i = 0; i < str.length; ++i) {
-			if (skipBlanks && str[i].isBlank())
+		for (String s : str) {
+			if (skipBlanks && s.isBlank())
 				continue;
-			result += str[i] + delimiter;
+
+			result += s + delimiter;
 		}
 
 		return result.substring(0, result.length() - delimiter.length());
@@ -163,7 +164,7 @@ public class StringUtil {
 	{
 		int length = s.length();
 
-		return len <= length ? s : (ch + "").repeat(len - length) + s;
+		return len <= length ? s : String.valueOf(ch).repeat(len - length) + s;
 	}
 
 	public static String padTrailing(String s, int len)
@@ -175,7 +176,7 @@ public class StringUtil {
 	{
 		int length = s.length();
 
-		return len <= length ? s : s + (ch + "").repeat(len - length);
+		return len <= length ? s : s + String.valueOf(ch).repeat(len - length);
 	}
 
 	public static String reverse(String str)

@@ -20,7 +20,7 @@ public class DrawHistogramTest {
 
             int [] a = ArrayUtil.getRandomArray(random, n, 0, 11);
 
-            //ArrayUtil.print(a);
+            ArrayUtil.print(a);
 
             int [] data = ArrayUtil.getHistogramData(a, 10);
 

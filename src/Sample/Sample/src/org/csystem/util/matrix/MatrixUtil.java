@@ -35,8 +35,8 @@ public class MatrixUtil {
 
     public static void fillRandomMatrix(Random random, int [][] a, int min, int bound)
     {
-        for (int i = 0; i < a.length; ++i)
-            ArrayUtil.fillRandomArray(random, a[i], min, bound);
+        for (int[] array : a)
+            ArrayUtil.fillRandomArray(random, array, min, bound);
     }
 
     public static boolean isSquareMatrix(int [][] a)
