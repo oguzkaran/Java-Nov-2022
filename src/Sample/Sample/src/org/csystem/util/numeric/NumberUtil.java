@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: NumberUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 29.04.2023
+	LAST UPDATE		: 13.05.2023
 	
 	Utility class for numeric operations
 	
@@ -14,10 +14,10 @@ import static java.lang.Math.abs;
 import static java.lang.Math.log10;
 
 public class NumberUtil {
-	public static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
-	public static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+	private static String [] ms_ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+	private static String [] ms_tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 
-	public static int [] getDigits(long val, int n)
+	private static int [] getDigits(long val, int n)
 	{
 		int [] digits = new int[val == 0 ? 1 : (int)(Math.log10(Math.abs(val)) / n) + 1];
 		int powOfTen = (int)pow(10, n);
@@ -30,21 +30,21 @@ public class NumberUtil {
 		return digits;
 	}
 
-	public static String numToText3DigitsTR(int a, int b, int c)
+	private static String numToText3DigitsTR(int a, int b, int c)
 	{
 		String str = "";
 
 		if (a != 0) {
 			if (a != 1)
-				str += ones[a];
+				str += ms_ones[a];
 
 			str += "yüz";
 		}
 
-		return str  + tens[b] + ones[c];
+		return str  + ms_tens[b] + ms_ones[c];
 	}
 
-	public static String numToText3DigitsTR(int val)
+	private static String numToText3DigitsTR(int val)
 	{
 		if (val == 0)
 			return "sıfır";

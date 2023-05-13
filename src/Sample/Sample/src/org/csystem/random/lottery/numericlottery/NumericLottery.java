@@ -3,9 +3,9 @@ package org.csystem.random.lottery.numericlottery;
 import java.util.Random;
 
 public class NumericLottery {
-    public Random random;
+    private Random m_random;
 
-    public static int [] getNumbers(boolean [] flags)
+    private static int [] getNumbers(boolean [] flags)
     {
         int [] numbers = new int[6];
         int index = 0;
@@ -17,7 +17,7 @@ public class NumericLottery {
         return numbers;
     }
 
-    public boolean [] getFlags()
+    private boolean [] getFlags()
     {
         boolean [] flags = new boolean[50];
 
@@ -25,7 +25,7 @@ public class NumericLottery {
             int val;
 
             for (;;) {
-                val = random.nextInt(1, 50);
+                val = m_random.nextInt(1, 50);
                 if (!flags[val])
                     break;
             }
@@ -37,12 +37,12 @@ public class NumericLottery {
 
     public NumericLottery()
     {
-        random = new Random();
+        m_random = new Random();
     }
 
     public NumericLottery(Random r)
     {
-        random = r;
+        m_random = r;
     }
 
     public int [] getNumbers()

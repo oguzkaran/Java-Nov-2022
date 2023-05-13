@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: Point.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 01.04.2023
+	LAST UPDATE		: 13.05.2023
 	
 	Point class that represents a point in cartesian plane
 	
@@ -14,36 +14,56 @@ import static java.lang.Math.sqrt;
 import static java.lang.Math.pow;
 
 public class Point {
-	public double x, y; 
+	private double m_x, m_y;
 	
 	public Point()
 	{	
 	}
 	
-	public Point(double a)
+	public Point(double x)
 	{
-		x = a;
+		m_x = x;
 	}
 	
-	public Point(double a, double b)
+	public Point(double x, double y)
 	{
-		x = a;
-		y = b;
+		m_x = x;
+		m_y = y;
 	}
-	
+
+	public double getX()
+	{
+		return m_x;
+	}
+
+	public void setX(double x)
+	{
+		m_x = x;
+	}
+
+	public double getY()
+	{
+		return m_y;
+	}
+
+	public void setY(double y)
+	{
+		m_y = y;
+	}
+
 	public double distance()
 	{
 		return distance(0, 0);
 	}
 	
-	public double distance(double a, double b)
+	public double distance(double x, double y)
 	{
-		return sqrt(pow(x - a, 2) + pow(y - b, 2));
+		return sqrt(pow(m_x - x, 2) + pow(m_y - y, 2));
 	}
 	
 	public double distance(Point other)
 	{
-		return distance(other.x, other.y);
+		return distance(other.m_x, other.m_y);
 	}
 	
 	public void offset(double dxy)
@@ -53,12 +73,12 @@ public class Point {
 	
 	public void offset(double dx, double dy)
 	{
-		x += dx;
-		y += dy;
+		m_x += dx;
+		m_y += dy;
 	}
 	
 	public String toString()
 	{
-		return String.format("(%.2f, %.2f)", x, y);
+		return String.format("(%.2f, %.2f)", m_x, m_y);
 	}
 }
