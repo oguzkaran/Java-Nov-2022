@@ -12,7 +12,6 @@ public class ExamSimulation {
     private double [] m_averages;
     private int [] m_minGrades;
     private int [] m_maxGrades;
-
     private Random m_random;
 
     private void fillGrades()
@@ -49,10 +48,40 @@ public class ExamSimulation {
         m_average = (double)totalGrades / numberOfAllStudents;
     }
 
-    public ExamSimulation(String name, Random r)
+    public ExamSimulation(String name, Random random)
     {
         m_lectureName = name;
-        m_random = r;
+        m_random = random;
+    }
+
+    public String getLectureName()
+    {
+        return m_lectureName;
+    }
+
+    public int getGrade(int i, int k)
+    {
+        return m_grades[i][k];
+    }
+
+    public double getAverage()
+    {
+        return m_average;
+    }
+
+    public double getAverage(int i)
+    {
+        return m_averages[i];
+    }
+
+    public int getMinGrade(int i)
+    {
+        return m_minGrades[i];
+    }
+
+    public int getMaxGrade(int i)
+    {
+        return m_maxGrades[i];
     }
 
     public void run()

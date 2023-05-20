@@ -25,11 +25,11 @@ public class GradeInfoParser {
 
         gradeInfo = new GradeInfo();
 
-        gradeInfo.studentName = gradeInfoStr[0];
-        gradeInfo.lectureName = gradeInfoStr[1];
-        gradeInfo.midtermDate = getDateStr(gradeInfoStr[2]);
-        gradeInfo.finalDate = getDateStr(gradeInfoStr[3]);
-        gradeInfo.midtermGrade = Integer.parseInt(gradeInfoStr[4]);
-        gradeInfo.finalGrade = Integer.parseInt(gradeInfoStr[5]);
+        gradeInfo.setStudentName(gradeInfoStr[0]);
+        gradeInfo.setLectureName(gradeInfoStr[1]);
+        gradeInfo.setMidtermDate(getDateStr(gradeInfoStr[2]));
+        gradeInfo.setFinalDate(getDateStr(gradeInfoStr[3]));
+        gradeInfo.setMidtermGrade(Integer.parseInt(gradeInfoStr[4]));
+        gradeInfo.setFinalGrade(Integer.parseInt(gradeInfoStr[5]));
     }
 }

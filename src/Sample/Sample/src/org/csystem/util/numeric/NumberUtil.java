@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: NumberUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 13.05.2023
+	LAST UPDATE		: 20.05.2023
 	
 	Utility class for numeric operations
 	
@@ -14,6 +14,10 @@ import static java.lang.Math.abs;
 import static java.lang.Math.log10;
 
 public class NumberUtil {
+	private NumberUtil()
+	{
+	}
+
 	private static String [] ms_ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
 	private static String [] ms_tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 
@@ -186,7 +190,6 @@ public class NumberUtil {
 			++val;
 		}
 	}
-
 
 	public static boolean isArmstrong(int a)
 	{

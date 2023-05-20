@@ -35,23 +35,23 @@ package org.csystem.app.university;
 import java.util.Scanner;
 
 public class GradeInfoApp {
-    public static void printReport(GradeInfo gradeInfo)
+    private static void printReport(GradeInfo gradeInfo)
     {
         int grade = gradeInfo.getTotalGrade();
 
         System.out.println("----------------------------------------------------------------");
-        System.out.printf("Adı Soyadı: %s%n", gradeInfo.studentName);
-        System.out.printf("Ders Adı: %s%n", gradeInfo.lectureName);
-        System.out.printf("Arasınav Tarihi: %s%n", gradeInfo.midtermDate);
-        System.out.printf("Final Tarihi: %s%n", gradeInfo.finalDate);
-        System.out.printf("Arasınav Notu: %d%n", gradeInfo.midtermGrade);
-        System.out.printf("Final Notu: %d%n", gradeInfo.finalGrade);
+        System.out.printf("Adı Soyadı: %s%n", gradeInfo.getStudentName());
+        System.out.printf("Ders Adı: %s%n", gradeInfo.getLectureName());
+        System.out.printf("Arasınav Tarihi: %s%n", gradeInfo.getMidtermDate());
+        System.out.printf("Final Tarihi: %s%n", gradeInfo.getFinalDate());
+        System.out.printf("Arasınav Notu: %d%n", gradeInfo.getMidtermGrade());
+        System.out.printf("Final Notu: %d%n", gradeInfo.getFinalGrade());
         System.out.printf("Geçme Notu: %d%n", grade);
         System.out.printf("Sonuç:%s%n", grade >= 50 ? "Geçti" : "Kaldı");
         System.out.println("----------------------------------------------------------------");
     }
 
-    public static void run()
+    private static void run()
     {
         Scanner kb = new Scanner(System.in);
 

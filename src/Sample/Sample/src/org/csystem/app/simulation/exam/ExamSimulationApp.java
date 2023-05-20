@@ -5,7 +5,7 @@ import org.csystem.simulation.exam.ExamSimulation;
 import java.util.Random;
 
 public class ExamSimulationApp {
-    public static void run()
+    private static void run()
     {
         Random r = new Random();
 

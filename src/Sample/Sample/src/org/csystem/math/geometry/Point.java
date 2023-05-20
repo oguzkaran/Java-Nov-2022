@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: Point.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 13.05.2023
+	LAST UPDATE		: 20.05.2023
 	
 	Point class that represents a point in cartesian plane
 	
@@ -10,25 +10,41 @@
 ------------------------------------------------------------*/
 package org.csystem.math.geometry;
 
-import static java.lang.Math.sqrt;
-import static java.lang.Math.pow;
+import static java.lang.Math.*;
 
 public class Point {
 	private double m_x, m_y;
-	
-	public Point()
-	{	
-	}
-	
-	public Point(double x)
+
+	private Point(double a, double b, boolean polar)
 	{
-		m_x = x;
+		if (polar) {
+			m_x = a * cos(a);
+			m_y = a * sin(a);
+		}
+		else {
+			m_x = a;
+			m_y = b;
+		}
 	}
-	
-	public Point(double x, double y)
+
+	public static Point createCartesian()
 	{
-		m_x = x;
-		m_y = y;
+		return createCartesian(0);
+	}
+
+	public static Point createCartesian(double x)
+	{
+		return createCartesian(x, 0);
+	}
+
+	public static Point createCartesian(double x, double y)
+	{
+		return new Point(x, y, false);
+	}
+
+	public static Point createPolar(double radius, double theta)
+	{
+		return new Point(radius, theta, true);
 	}
 
 	public double getX()

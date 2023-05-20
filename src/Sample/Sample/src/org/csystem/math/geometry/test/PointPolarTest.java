@@ -2,7 +2,7 @@ package org.csystem.math.geometry.test;
 
 import org.csystem.math.geometry.Point;
 
-public class PointTest {
+public class PointPolarTest {
     private static void run()
     {
         java.util.Scanner kb = new java.util.Scanner(System.in);
@@ -27,16 +27,17 @@ public class PointTest {
 
             System.out.println("-------------------------------");
             while (count-- > 0) {
-                double x = r.nextDouble(min, bound);
-                double y = r.nextDouble(min, bound);
-                Point p = Point.createCartesian(x, y);
+                double radius = r.nextDouble(min, bound);
+                double theta = r.nextDouble(min, bound);
+                Point p = Point.createPolar(radius, theta);
 
-                System.out.printf("x = %f, y = %f%n", x, y);
+                System.out.printf("Radius = %f, Theta = %f%n", radius, theta);
                 System.out.printf("(%f, %f)%n", p.getX(), p.getY());
             }
 
             System.out.println("-------------------------------");
         }
+
     }
 
     public static void main(String[] args)

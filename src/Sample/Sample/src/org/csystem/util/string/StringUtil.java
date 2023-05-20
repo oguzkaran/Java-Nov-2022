@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: StringUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 06.05.2023
+	LAST UPDATE		: 20.05.2023
 	
 	Utility class for string operations
 	
@@ -15,6 +15,15 @@ import org.csystem.util.array.ArrayUtil;
 import java.util.Random;
 
 public class StringUtil {
+	private static String ms_lettersTR = "abcçdefgğhıijklmnoöprsştuüvyz";
+	private static String ms_lettersEN = "abcdefghijklmnopqrstuwxvyz";
+	private static String ms_lettersAllTR = "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+	private static String ms_lettersAllEN = "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXYZ";
+
+	private StringUtil()
+	{
+	}
+
 	public static String capitalize(String s)
 	{
 		return s.isEmpty() ? "" : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
@@ -63,7 +72,7 @@ public class StringUtil {
 
 	public static String getRandomTextEN(Random r, int n)
 	{
-		return getRandomText(r, n, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXYZ");
+		return getRandomText(r, n, ms_lettersAllEN);
 	}
 
 	public static String getRandomTextTR(int n)
@@ -73,7 +82,7 @@ public class StringUtil {
 
 	public static String getRandomTextTR(Random r, int n)
 	{
-		return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
+		return getRandomText(r, n, ms_lettersAllTR);
 	}
 
 	public static boolean isPalindrome(String s)
@@ -119,12 +128,12 @@ public class StringUtil {
 
 	public static boolean isPangramEN(String s)
 	{
-		return isPangram(s.toLowerCase(), "abcdefghijklmnopqrstuwxvyz");
+		return isPangram(s.toLowerCase(), ms_lettersEN);
 	}
 
 	public static boolean isPangramTR(String s)
 	{
-		return isPangram(s.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");
+		return isPangram(s.toLowerCase(), ms_lettersTR);
 	}
 
 	public static String join(String [] str, String delimiter, boolean skipBlanks)
