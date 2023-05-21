@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: Line.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 20.05.2023
+	LAST UPDATE		: 21.05.2023
 
 	Line class that represents a line in cartesian plane
 
@@ -11,7 +11,7 @@
 package org.csystem.math.geometry;
 
 public class Line {
-    private Point m_p1, m_p2;
+    private final Point m_p1, m_p2;
 
     //...
 

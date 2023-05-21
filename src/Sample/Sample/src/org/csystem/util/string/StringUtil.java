@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: StringUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 20.05.2023
+	LAST UPDATE		: 21.05.2023
 	
 	Utility class for string operations
 	
@@ -15,10 +15,12 @@ import org.csystem.util.array.ArrayUtil;
 import java.util.Random;
 
 public class StringUtil {
-	private static String ms_lettersTR = "abcçdefgğhıijklmnoöprsştuüvyz";
-	private static String ms_lettersEN = "abcdefghijklmnopqrstuwxvyz";
-	private static String ms_lettersAllTR = "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
-	private static String ms_lettersAllEN = "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXYZ";
+	private static final String LETTERS_TR = "abcçdefgğhıijklmnoöprsştuüvyz";
+	private static final String LETTERS_EN = "abcdefghijklmnopqrstuwxvyz";
+	private static final String LETTERS_CAPITAL_TR = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+	private static final String LETTERS_CAPITAL_EN = "ABCDEFGHIJKLMNOPQRSTUWXYZ";
+	private static final String LETTERS_ALL_TR = LETTERS_TR + LETTERS_CAPITAL_TR;
+	private static final String LETTERS_ALL_EN = LETTERS_EN + LETTERS_CAPITAL_EN;
 
 	private StringUtil()
 	{
@@ -72,7 +74,7 @@ public class StringUtil {
 
 	public static String getRandomTextEN(Random r, int n)
 	{
-		return getRandomText(r, n, ms_lettersAllEN);
+		return getRandomText(r, n, LETTERS_ALL_EN);
 	}
 
 	public static String getRandomTextTR(int n)
@@ -82,7 +84,7 @@ public class StringUtil {
 
 	public static String getRandomTextTR(Random r, int n)
 	{
-		return getRandomText(r, n, ms_lettersAllTR);
+		return getRandomText(r, n, LETTERS_ALL_TR);
 	}
 
 	public static boolean isPalindrome(String s)
@@ -128,12 +130,12 @@ public class StringUtil {
 
 	public static boolean isPangramEN(String s)
 	{
-		return isPangram(s.toLowerCase(), ms_lettersEN);
+		return isPangram(s.toLowerCase(), LETTERS_EN);
 	}
 
 	public static boolean isPangramTR(String s)
 	{
-		return isPangram(s.toLowerCase(), ms_lettersTR);
+		return isPangram(s.toLowerCase(), LETTERS_TR);
 	}
 
 	public static String join(String [] str, String delimiter, boolean skipBlanks)

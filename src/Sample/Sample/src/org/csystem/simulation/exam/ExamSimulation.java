@@ -6,13 +6,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class ExamSimulation {
-    private String m_lectureName;
+    private final String m_lectureName;
     private int [][] m_grades;
     private double m_average;
     private double [] m_averages;
     private int [] m_minGrades;
     private int [] m_maxGrades;
-    private Random m_random;
+    private final Random m_random;
 
     private void fillGrades()
     {

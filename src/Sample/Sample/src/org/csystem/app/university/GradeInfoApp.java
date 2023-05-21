@@ -64,7 +64,7 @@ public class GradeInfoApp {
 
             GradeInfoParser parser = new GradeInfoParser(str);
 
-            printReport(parser.gradeInfo);
+            printReport(parser.getGradeInfo());
         }
     }
 
