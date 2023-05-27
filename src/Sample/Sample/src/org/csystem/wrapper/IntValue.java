@@ -14,6 +14,7 @@ package org.csystem.wrapper;
 public class IntValue {
     private static final int CACHE_MIN = -128;
     private static final int CACHE_MAX = 127;
+    private static final int CACHE_OFFSET = (CACHE_MAX - CACHE_MIN + 1) / 2;
     private static final IntValue [] CACHE = new IntValue[CACHE_MAX - CACHE_MIN + 1];
     private final int m_value;
 
@@ -32,10 +33,10 @@ public class IntValue {
         if (value < CACHE_MIN || CACHE_MAX < value)
             return new IntValue(value);
 
-        if (CACHE[value + CACHE_MAX + 1] == null)
-            CACHE[value + CACHE_MAX + 1] = new IntValue(value);
+        if (CACHE[value + CACHE_OFFSET] == null)
+            CACHE[value + CACHE_OFFSET] = new IntValue(value);
 
-        return CACHE[value + CACHE_MAX + 1];
+        return CACHE[value + CACHE_OFFSET];
     }
 
     public int intValue()
@@ -114,7 +115,7 @@ public class IntValue {
 
     public IntValue dec()
     {
-        return of(m_value - 1);
+        return subtract(1);
     }
 
     public String toString()

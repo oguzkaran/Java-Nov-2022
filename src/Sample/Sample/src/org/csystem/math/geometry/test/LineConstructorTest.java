@@ -1,7 +1,7 @@
 package org.csystem.math.geometry.test;
 
 import org.csystem.math.geometry.Line;
-import org.csystem.math.geometry.Point;
+import org.csystem.math.geometry.MutablePoint;
 
 public class LineConstructorTest {
     public static void run()
@@ -10,7 +10,7 @@ public class LineConstructorTest {
 
         System.out.println(line.toString());
 
-        Point p1 = line.getPoint1();
+        MutablePoint p1 = line.getPoint1();
 
         p1.offset(20);
 

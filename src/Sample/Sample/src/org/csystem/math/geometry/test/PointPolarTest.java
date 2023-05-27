@@ -1,6 +1,6 @@
 package org.csystem.math.geometry.test;
 
-import org.csystem.math.geometry.Point;
+import org.csystem.math.geometry.MutablePoint;
 
 public class PointPolarTest {
     private static void run()
@@ -19,7 +19,7 @@ public class PointPolarTest {
         double bound = Double.parseDouble(kb.nextLine());
 
 
-        for (; ; ) {
+        while (true) {
             System.out.print("Kaç tane nokta üretmek istersiniz?");
             int count = Integer.parseInt(kb.nextLine());
             if (count <= 0)
@@ -29,7 +29,7 @@ public class PointPolarTest {
             while (count-- > 0) {
                 double radius = r.nextDouble(min, bound);
                 double theta = r.nextDouble(min, bound);
-                Point p = Point.createPolar(radius, theta);
+                MutablePoint p = MutablePoint.ofPolar(radius, theta);
 
                 System.out.printf("Radius = %f, Theta = %f%n", radius, theta);
                 System.out.printf("(%f, %f)%n", p.getX(), p.getY());

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: Line.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 21.05.2023
+	LAST UPDATE		: 27.05.2023
 
 	Line class that represents a line in cartesian plane
 
@@ -11,24 +11,24 @@
 package org.csystem.math.geometry;
 
 public class Line {
-    private final Point m_p1, m_p2;
+    private final MutablePoint m_p1, m_p2;
 
     //...
 
     public Line(double x1, double y1, double x2, double y2)
     {
-        m_p1 = Point.createCartesian(x1, y1);
-        m_p2 = Point.createCartesian(x2, y2);
+        m_p1 = MutablePoint.ofCartesian(x1, y1);
+        m_p2 = MutablePoint.ofCartesian(x2, y2);
     }
 
-    public Point getPoint1()
+    public MutablePoint getPoint1()
     {
-        return Point.createCartesian(m_p1.getX(), m_p1.getY());
+        return MutablePoint.ofCartesian(m_p1.getX(), m_p1.getY());
     }
 
-    public Point getPoint2()
+    public MutablePoint getPoint2()
     {
-        return Point.createCartesian(m_p2.getX(), m_p2.getY());
+        return MutablePoint.ofCartesian(m_p2.getX(), m_p2.getY());
     }
 
     public double getX1()

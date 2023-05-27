@@ -2,7 +2,7 @@ package org.csystem.math.geometry.test;
 
 import org.csystem.math.geometry.Point;
 
-public class PointTest {
+public class MutablePointTest {
     private static void run()
     {
         java.util.Scanner kb = new java.util.Scanner(System.in);
