@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Aşağıda bildirilen Time sınıfını açıklamalara göre yazınız
+    Aşağıda bildirilen Date sınıfını açıklamalara göre yazınız
     Açıklamalar:
         - Sınıf bir zamanı temsil edecektir (saat, dakika, saniye ve milisaniye)
 
@@ -11,10 +11,9 @@
 
         - Sınıf 24 saat dilimine göre değerleri ele alacaktır
 
-        - Sınıfın içerisinde bildirilen metotlarda
-            throw new UnsupportedOperationException("TODO");
-        biçimindeki deyim geri dönüş değeri olan metotlar error vermesin diye yazışmıştır. Bu konu ileride ele alınacaktır.
-        Metodu yazarken bu deyimi kaldırınız
+        - Sınıfın içerisinde bildirilen metotlarda throw new UnsupportedOperationException("TODO"); biçimindeki deyim
+        geri dönüş değeri olan metotlar error vermesin diye yazışmıştır. Bu konu ileride ele alınacaktır. Metodu
+        yazarken bu deyimi kaldırınız
 
         - Sınıfa ilişkin test kodlarını da yazınız
 -----------------------------------------------------------------------------------------------------------------------*/
@@ -22,7 +21,7 @@
 /*------------------------------------------------------------------
 	FILE		: Time.java
 	AUTHOR		: Java-Nov-2022 Group
-	LAST UPDATE	: 21.05.2023
+	LAST UPDATE	: 05.06.2023
 
 	Time class that represents a time
 
