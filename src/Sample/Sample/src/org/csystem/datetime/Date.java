@@ -9,17 +9,20 @@
 
         - Sınıf geçersiz tarih durumunu kontrol edecektir. Geçersizlik durumunda bir mesaj vererek program sonlandırılacaktır
 
-        - Sınıfın DayOfWeek ve Month enum class'larını kullanmaktadır. enum class'ların sabitlerini değiştirmeden istediğiniz
+        - Sınıf, DayOfWeek ve Month enum class'larını kullanmaktadır. enum class'ların sabitlerini değiştirmeden istediğiniz
         eklemeyi yapabilirsiniz
 
-        - Sınıfın içerisinde bildirilen metotlarda throw new UnsupportedOperationException("TODO"); biçimindeki deyim
-        geri dönüş değeri olan metotlar error vermesin diye yazışmıştır. Bu konu ileride ele alınacaktır. Metodu
-        yazarken bu deyimi kaldırınız
+        - Sınıfın içerisinde bildirilen metotlarda
+
+            throw new UnsupportedOperationException("TODO");
+
+        biçimindeki deyim geri dönüş değeri olan metotlar error vermesin diye yazışmıştır. Bu konu ileride ele alınacaktır.
+        İlgili metodu yazarken bu deyimi kaldırınız
 
         - Daha önce yazılmış olan DateUtil sınıfı içerisinde metotlardan yararlanabilirsiniz. Ancak sınıf DateUtil
         sınıfını kullanmayacaktır
 
-        - Ay bilgisini değer olarak alan veya değer olarak geri döndüren metotlar içinm değer [1, 12] aralığında olacaktır
+        - Ay bilgisini değer olarak alan veya değer olarak geri döndüren metotlar için değer [1, 12] aralığında olacaktır
 
         - Sınıfa ilişkin test kodlarını da yazınız
 -----------------------------------------------------------------------------------------------------------------------*/
@@ -98,12 +101,12 @@ public class Date {
 
     public String getDayOfWeekTR()
     {
-        throw new UnsupportedOperationException("TODO:");
+        throw new UnsupportedOperationException("TODO:Pazar, Pazartesi, Salı, ..., Cumartesi");
     }
 
     public boolean isLeapYear()
     {
-        throw new UnsupportedOperationException("TODO:");
+        throw new UnsupportedOperationException("TODO: Sunday, Monday, Tuesday, ..., Saturday");
     }
 
     public boolean isWeekday()
@@ -121,9 +124,9 @@ public class Date {
         throw new UnsupportedOperationException("TODO -> 01/04/2023");
     }
 
-    public String toString(char delimiter)
+    public String toString(char separator)
     {
-        throw new UnsupportedOperationException("TODO -> if delinmiter is . then 01.04.2023");
+        throw new UnsupportedOperationException("TODO -> if separator is . then 01.04.2023");
     }
 
     public String toLongDateStringTR()

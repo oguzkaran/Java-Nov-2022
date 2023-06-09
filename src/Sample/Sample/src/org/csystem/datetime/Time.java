@@ -11,8 +11,12 @@
 
         - Sınıf 24 saat dilimine göre değerleri ele alacaktır
 
-        - Sınıfın içerisinde bildirilen metotlarda throw new UnsupportedOperationException("TODO"); biçimindeki deyim
-        geri dönüş değeri olan metotlar error vermesin diye yazışmıştır. Bu konu ileride ele alınacaktır. Metodu
+        - Sınıfın içerisinde bildirilen metotlarda
+
+            throw new UnsupportedOperationException("TODO");
+
+        biçimindeki deyim
+        geri dönüş değeri olan metotlar error vermesin diye yazışmıştır. Bu konu ileride ele alınacaktır. İlgili metodu
         yazarken bu deyimi kaldırınız
 
         - Sınıfa ilişkin test kodlarını da yazınız
