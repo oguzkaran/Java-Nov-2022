@@ -10,7 +10,7 @@
 ------------------------------------------------------------*/
 package org.csystem.math.geometry;
 
-import static java.lang.Math.*;
+import static java.lang.Math.PI;
 
 public class Circle {
     private double m_radius;

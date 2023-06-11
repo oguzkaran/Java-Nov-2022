@@ -1,8 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Türemiş sınıf nesnesi içerisinde taban sınıf nesnesi kadar alan da bulunur. Yani türemiş sınıf nesnesi içerisinde
-	taban sınıfın non-static veri elemanlarında vardır. Bu durumda belleksel yani nesnesel bir kapsama vardır. Bu durumda
-	türemiş sınıf nesnesinin uzunlupu "en az, taban sınıf nesnesinin uzunluğu + türemiş sınıfa eklenen non-static
-	veri elemanlarının toplam uzunluğu kadardır"
+	Nitelikli ve niteliksiz isim arama genel kurallarına göre bir isim bulunamazsa taban sınıfa ve dolaylı taban sınıflara
+	da bulununcaya veya bulunamayaıncaya kadar sırasıyla bakılır. Bulunursa ilk bulunan sınıftaki isim alınır
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
@@ -11,29 +9,31 @@ class App {
 	{
 		C c = new C();
 
-		c.x = 10;
-		c.y = 3.4;
-		c.z = true;
-
-		System.out.printf("c.x = %d, c.y = %f, c.z = %b%n", c.x, c.y, c.z);
+		c.bar(10);
+		System.out.printf("c.x = %d%n", c.x);
+		System.out.printf("c.y = %d%n", c.y);
 	}
 }
 
 class C extends B {
 	//...
-	public boolean z;
-	//...
+	public void bar(int val)
+	{
+		foo();
+		y = -val;
+		x += val;
+	}
 }
 
 class B extends A {
-	//...
-	public double y;
-	//...
+	public int y;
+
+	public void foo()
+	{
+		System.out.println("B.foo");
+	}
 }
-
 class A {
-	//...
 	public int x;
-
 	//...
 }
