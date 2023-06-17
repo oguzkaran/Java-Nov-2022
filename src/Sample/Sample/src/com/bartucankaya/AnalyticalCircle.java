@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: AnalyticalCircle.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 11.06.2023
+	LAST UPDATE		: 17.06.2023
 
 	AnalyticalCircle class that represents a circle
 	int cartesian plane
@@ -15,6 +15,8 @@ import org.csystem.math.geometry.Circle;
 import org.csystem.math.geometry.MutablePoint;
 
 public class AnalyticalCircle extends Circle {
+    private static final double DELTA = 0.00001;
+
     private final MutablePoint m_mutablePoint;
 
     public AnalyticalCircle()
@@ -58,6 +60,29 @@ public class AnalyticalCircle extends Circle {
         m_mutablePoint.setX(y);
     }
 
+    public void set(double x, double y)
+    {
+        setX(x);
+        setY(y);
+    }
 
+    public double centerDistance(AnalyticalCircle other)
+    {
+        return m_mutablePoint.distance(other.m_mutablePoint);
+    }
 
+    public boolean isTangent(AnalyticalCircle other)
+    {
+        return Math.abs(centerDistance(other) - getRadius() - other.getRadius()) < DELTA;
+    }
+
+    public void offset(double dx, double dy)
+    {
+        m_mutablePoint.offset(dx, dy);
+    }
+
+    public void offset(double dxy)
+    {
+        offset(dxy, dxy);
+    }
 }
