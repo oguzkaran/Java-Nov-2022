@@ -1,4 +1,6 @@
-package com.alicankececi.rental.vehicle;
+package com.onurozcan.vehicle;
+
+import com.boraserce.vehicle.CommercialVehicle;
 
 public class Bus extends CommercialVehicle {
     private double m_length;

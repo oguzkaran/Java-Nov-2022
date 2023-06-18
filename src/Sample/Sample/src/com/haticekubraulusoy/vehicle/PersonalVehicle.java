@@ -1,4 +1,6 @@
-package com.alicankececi.rental.vehicle;
+package com.haticekubraulusoy.vehicle;
+
+import com.alicankececi.rental.vehicle.Vehicle;
 
 public class PersonalVehicle extends Vehicle {
     protected int controlPeriod;

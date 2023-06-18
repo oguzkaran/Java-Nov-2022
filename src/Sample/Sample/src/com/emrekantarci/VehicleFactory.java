@@ -1,6 +1,10 @@
 package com.emrekantarci;
 
 import com.alicankececi.rental.vehicle.*;
+import com.fatihkarabulut.vehicle.commercial.Taxi;
+import com.fatihkarabulut.vehicle.commercial.Truck;
+import com.onurozcan.vehicle.Bus;
+import com.onurozcan.vehicle.Car;
 
 import java.util.Random;
 

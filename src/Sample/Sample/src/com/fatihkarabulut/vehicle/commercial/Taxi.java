@@ -1,4 +1,6 @@
-package com.alicankececi.rental.vehicle;
+package com.fatihkarabulut.vehicle.commercial;
+
+import com.boraserce.vehicle.CommercialVehicle;
 
 public class Taxi extends CommercialVehicle {
     private String m_city;

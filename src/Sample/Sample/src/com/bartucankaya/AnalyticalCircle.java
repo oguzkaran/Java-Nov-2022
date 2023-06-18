@@ -57,7 +57,7 @@ public class AnalyticalCircle extends Circle {
 
     public void setY(double y)
     {
-        m_mutablePoint.setX(y);
+        m_mutablePoint.setY(y);
     }
 
     public void set(double x, double y)

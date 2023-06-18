@@ -1,57 +1,77 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Programlamada genelleştirme açısından türden bağımsız (type independent) yazılır. Aslında programlamda temel amaçlardan
-	biri yapılacak eklentiler durumunda eski kodlara dokunmamaktır. Aslında şöyle bir genel durum söylenebilir: Bir programın
-	ilerleyen bir versiyonunda önceden yazılmış kodlara yönelik senaryo değişmedikten sonra, eski kodlara ne kadar az
-	müdahale edilmesi gerekirse, kod o kadar kaliteli (iyi) yazılmıştır". İşte bu sebeple türden bağımsız kod yazmak programa
-	eklenecek örneğin sınıfların bir lego'nun parçası gibi diğer parçalara dokunmadan eklenebilmesini sağlar.
-
-	Aşağıdaki örnekte VehicleOperation sınıfının payTax metodu vehicle parametresi aldığından, tüm Vehicle sınıfından doğrudan
-	ya da dolaylı olarak türetilmiş referans ile çağrılabilir. Bu durumda bu hiyararşiye yeni bir "vehicle" eklendiğinde
-	payTax metodunun değiştirilmesi ya da yeni bir metot eklenmesi gerekmez.
-
-	Not: Aşağıdaki örnek durumu göstermek için yazılmıştır. Şüphesiz konuya ilişkin bir çok detay da bulunmaktasır. Detayla
-	dışında senaryonun bu kısmının türden bağımsızlığına odaklanınız
+	instanceof operatörü birinci operandına ilişkin referansın dinamik türünün ikinci operandına ilişkin türü kapsayıp
+	kapsamadığına bakar. Aşağıdaki programı çalıştırıp sonucu gözlemleyiniz
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import java.util.Random;
+import java.util.Scanner;
 
 class App {
 	public static void main(String [] args)
 	{
-		B x = new B();
-		A y;
-
-		x.a = 10;
-		x.b = 20;
-
-		System.out.printf("x.a = %d%n", x.a);
-		System.out.printf("x.b = %d%n", x.b);
-		System.out.println("---------------------------------------");
-
-		y = x; //upcasting
-
-		++y.a;
-		System.out.printf("x.a = %d%n", x.a);
-		System.out.printf("y.a = %d%n", y.a);
-		System.out.printf("x.b = %d%n", x.b);
-		System.out.println("---------------------------------------");
-
-		++x.a;
-
-		System.out.printf("x.a = %d%n", x.a);
-		System.out.printf("y.a = %d%n", y.a);
-		System.out.printf("x.b = %d%n", x.b);
-		System.out.println("---------------------------------------");
+		Application.run();
 	}
+}
+
+class Application {
+	public static void run()
+	{
+		AFactory factory = new AFactory();
+		Scanner kb = new Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int count = kb.nextInt();
+
+		while (count-- > 0) {
+			A a = factory.create();
+			B b;
+
+			System.out.println("------------------------------------------------");
+			System.out.println(a.getClass().getName());
+
+			if (a instanceof B) {
+				b = (B)a;
+				System.out.println("Haklı dönüşüm");
+			}
+			else
+				System.out.println("Haksız dönüşüm");
+
+			System.out.println("------------------------------------------------");
+		}
+	}
+}
+
+class AFactory {
+	private final Random m_random = new Random();
+
+	public A create()
+	{
+		return switch (m_random.nextInt(5)) {
+			case 0 -> new B();
+			case 1 -> new C();
+			case 2 -> new D();
+			case 4 -> new E();
+			default -> new A();
+		};
+	}
+}
+
+class E extends A {
+	//...
+}
+
+class D extends B {
+	//...
+}
+
+class C extends B {
+	//..
 }
 
 class B extends A {
 	//...
-	public int b;
-	//...
 }
 
 class A {
-	//...
-	public int a;
 	//...
 }

@@ -15,7 +15,7 @@ public class RentalVehicleDemoApp {
             Vehicle vehicle = factory.createVehicle();
 
             vehicleOperation.payTax(vehicle);
-            ThreadUtil.sleep(1000);
+            ThreadUtil.sleep(2000);
         }
     }
     public static void main(String[] args)

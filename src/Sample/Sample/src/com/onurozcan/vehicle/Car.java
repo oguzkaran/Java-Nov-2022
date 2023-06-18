@@ -1,4 +1,6 @@
-package com.alicankececi.rental.vehicle;
+package com.onurozcan.vehicle;
+
+import com.haticekubraulusoy.vehicle.PersonalVehicle;
 
 public class Car extends PersonalVehicle {
     private String m_type;

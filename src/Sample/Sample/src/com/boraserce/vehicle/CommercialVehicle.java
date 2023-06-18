@@ -1,4 +1,6 @@
-package com.alicankececi.rental.vehicle;
+package com.boraserce.vehicle;
+
+import com.alicankececi.rental.vehicle.Vehicle;
 
 public class CommercialVehicle extends Vehicle {
     protected boolean forPassenger;

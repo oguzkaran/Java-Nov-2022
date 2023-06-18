@@ -1,4 +1,6 @@
-package com.alicankececi.rental.vehicle;
+package com.fatihkarabulut.vehicle.commercial;
+
+import com.boraserce.vehicle.CommercialVehicle;
 
 public class Truck extends CommercialVehicle {
     private double m_length;
