@@ -1,6 +1,6 @@
 package org.csystem.util.thread;
 
-public class ThreadUtil {
+public final class ThreadUtil {
     public static void sleep(long ms)
     {
         try {

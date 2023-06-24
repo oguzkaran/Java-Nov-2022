@@ -4,7 +4,6 @@ import org.csystem.math.geometry.Line;
 import org.csystem.math.geometry.Point;
 import org.csystem.util.array.ArrayUtil;
 import org.csystem.util.generator.random.ObjectArrayGenerator;
-import org.csystem.wrapper.IntValue;
 
 import java.util.Scanner;
 
@@ -19,8 +18,8 @@ public class DemoApp {
 
             if (object instanceof String s)
                 System.out.printf("Text:%s, upper:%s%n", s, s.toUpperCase());
-            else if (object instanceof IntValue intValue) {
-                int val = intValue.intValue();
+            else if (object instanceof Integer) {
+                int val = (int)object;
 
                 System.out.printf("%d * %d = %d%n", val, val, val * val);
             }
@@ -34,6 +33,16 @@ public class DemoApp {
             else if (object instanceof int[] a) {
                 ArrayUtil.print(2, a);
                 System.out.printf("Total:%d%n", ArrayUtil.sum(a));
+            }
+            else if (object instanceof Character) {
+                char ch = (char)object;
+
+                System.out.printf("ch = %c, ch = '\\u%04X'%n", ch, (int)ch);
+            }
+            else if (object instanceof Boolean) {
+                boolean flag = (boolean)object;
+
+                System.out.println(flag ? "Open" : "Closed");
             }
             System.out.println("-----------------------------------------------------------");
         }
