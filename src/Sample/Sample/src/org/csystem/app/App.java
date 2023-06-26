@@ -1,48 +1,21 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Anahtar Notlar: Bir nesnenin kullanılamaz durumda olup yok edilememesi durumuna "bellek sınıtısı (memory leak)"
-	denir. Bazı programlama dillerinde dinamik tahsis edilen bellek alanlarının "free/delete" edilmesi programcının
-	sorumluluğundadır. Bu tarz programlama dillerinde, programcı dinamik tahsis ediklen alanı geri bırakmazsa, bu alanlar
-	programın sonuna kadar yaşarlar. Memory leak oluşumunda zaman içerisinde bellekte yer kalmaması durumu oluşabilir, ya da
-	çok fazla bnesne yaratılması da yavaşlığa sebep olabilir. Java'da garbage collector olduğuna göre memroy leak oluşur mu?
+	Bir sınıfın metotlarının aynı referans (adres) üzerinde yani aynı nesne için, zincir biçiminde aşağıdaki gibi
+	çağrılabilmesi için implementasyonda this referansına geri dönülmelidir. Bu biçimdeki çağrılara "fluent", bu
+	biçimde yazılmıiş sınıflara ilişkin tasarım kalıbına ise "fluent pattern" denir. Bir sınıfın bu şekilde yazılıp
+	yazılmayacağı şüphesiz senaryoya bağlıdır
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
+
+import org.csystem.wrapper.MutableIntValue;
 
 class App {
 	public static void main(String [] args)
 	{
-		Sample s;
+		MutableIntValue value = MutableIntValue.of(20);
 
-		s = new Sample(); //rc1:1
+		int val = value.multiply(2).add(4).mod(3).subtract(1).getValue();
 
-		{
-			Sample k = s; //rc1:2
-
-			Mample.foo(k); //rc1:3 -> rc1:4
-			//rc1:3 -> rc1:2
-		} //rc:1
-
-		Mample.foo(s); //rc1:2 -> rc1:3
-		//rc1:2 -> rc1:1
-
-		s = new Sample(); //rc2:1, rc1:0 (garbage collected)
-
-		System.gc(); //Runtime.getRuntime().gc();
-		//... (Programın sonlanmadığını varsayınız
+		System.out.printf("value = %d", val);
 	}
 }
 
-class Mample {
-	public static void foo(Sample s)
-	{
-		Sample k;
-
-		//... (Burada k veya s referansı başka bir referansa atanmıyor varsayınız)
-
-		k = s;
-
-		//... (Burada k veya s referansı başka bir referansa atanmıyor varsayınız)
-	}
-}
-class Sample {
-	//...
-}
