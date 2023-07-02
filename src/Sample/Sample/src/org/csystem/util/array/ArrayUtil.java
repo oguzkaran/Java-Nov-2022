@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: ArrayUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 24.06.2023
+	LAST UPDATE		: 02.07.2023
 
 	Utility class for array operations
 
@@ -71,9 +71,6 @@ public final class ArrayUtil {
         }
     }
 
-
-
-
     public static void addBy(int [][] a, int value)
     {
         for (int [] array : a)
@@ -97,6 +94,15 @@ public final class ArrayUtil {
             bubbleSortDescending(a);
         else
             bubbleSortAscending(a);
+    }
+
+    public static int [] copyOf(int [] a, int newLength)
+    {
+        int [] result = new int[newLength];
+
+        System.arraycopy(a, 0, result, 0, Math.min(newLength, a.length));
+
+        return result;
     }
 
     public static void drawHistogram(int [] data, int n, char ch)

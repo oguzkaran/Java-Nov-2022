@@ -1,39 +1,28 @@
 /*----------------------------------------------------------------------------------------------------------------------
-
+	ArrayList sınıfının toString metodu ile ArrayList'in elemanları [] içeerisinde virgülle ayrılacak şekilde bir String
+	elde edilebilir. Bu String'in elde edilme detayları ileride ele alınacaktır
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.wrapper.IntValue;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class App {
 	public static void main(String [] args)
 	{
-		DemoApp.run();
-	}
-}
-
-class DemoApp {
-	public static void run()
-	{
 		Scanner kb = new Scanner(System.in);
-		System.out.print("Bir sayı giriniz:");
-		int val = kb.nextInt();
+		ArrayList names = new ArrayList();
 
-		if (val < 1 || val > 3) {
-			System.out.println("Geçersiz değer girdiniz!...");
-			System.exit(1);
+		while (true) {
+			System.out.print("İsim giriniz:");
+			String name = kb.nextLine();
+
+			if ("elma".equals(name))
+				break;
+
+			names.add(name);
 		}
 
-		IntValue value = null;
-
-		switch (val) {
-			case 1 -> value = IntValue.of(-128);
-			case 2 -> value = IntValue.of(0);
-			case 3 -> value = IntValue.of(127);
-		}
-
-		System.out.printf("Value:%d%n", value.intValue());
+		System.out.println(names.isEmpty() ? "Hiç isim girmediniz!..." : names.toString());
 	}
 }
