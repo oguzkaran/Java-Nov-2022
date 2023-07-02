@@ -1,21 +1,39 @@
 /*----------------------------------------------------------------------------------------------------------------------
-	Bir sınıfın metotlarının aynı referans (adres) üzerinde yani aynı nesne için, zincir biçiminde aşağıdaki gibi
-	çağrılabilmesi için implementasyonda this referansına geri dönülmelidir. Bu biçimdeki çağrılara "fluent", bu
-	biçimde yazılmıiş sınıflara ilişkin tasarım kalıbına ise "fluent pattern" denir. Bir sınıfın bu şekilde yazılıp
-	yazılmayacağı şüphesiz senaryoya bağlıdır
+
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import org.csystem.wrapper.MutableIntValue;
+import org.csystem.wrapper.IntValue;
+
+import java.util.Scanner;
 
 class App {
 	public static void main(String [] args)
 	{
-		MutableIntValue value = MutableIntValue.of(20);
-
-		int val = value.multiply(2).add(4).mod(3).subtract(1).getValue();
-
-		System.out.printf("value = %d", val);
+		DemoApp.run();
 	}
 }
 
+class DemoApp {
+	public static void run()
+	{
+		Scanner kb = new Scanner(System.in);
+		System.out.print("Bir sayı giriniz:");
+		int val = kb.nextInt();
+
+		if (val < 1 || val > 3) {
+			System.out.println("Geçersiz değer girdiniz!...");
+			System.exit(1);
+		}
+
+		IntValue value = null;
+
+		switch (val) {
+			case 1 -> value = IntValue.of(-128);
+			case 2 -> value = IntValue.of(0);
+			case 3 -> value = IntValue.of(127);
+		}
+
+		System.out.printf("Value:%d%n", value.intValue());
+	}
+}
