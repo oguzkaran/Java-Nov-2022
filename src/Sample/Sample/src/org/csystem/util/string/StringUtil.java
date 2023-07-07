@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: StringUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 24.06.2023
+	LAST UPDATE		: 07.07.2023
 	
 	Utility class for string operations
 	
@@ -33,12 +33,16 @@ public final class StringUtil {
 
 	public static String changeCase(String s)
 	{
-		char [] c = s.toCharArray();
+		StringBuilder sb = new StringBuilder(s);
 
-		for (int i = 0; i < c.length; ++i)
-			c[i] = Character.isUpperCase(c[i]) ? Character.toLowerCase(c[i]) : Character.toUpperCase(c[i]);
+		int len = sb.length();
 
-		return String.valueOf(c);
+		for (int i = 0; i < len; ++i) {
+			char ch = sb.charAt(i);
+			sb.setCharAt(i, Character.isUpperCase(ch) ? Character.toLowerCase(ch) : Character.toUpperCase(ch));
+		}
+
+		return sb.toString();
 	}
 
 	public static int countString(String s1, String s2)
@@ -58,13 +62,13 @@ public final class StringUtil {
 
 	public static String getRandomText(Random r, int n, String text)
 	{
-		char [] c = new char[n];
+		StringBuilder sb = new StringBuilder(n);
 		int len = text.length();
 
 		for (int i = 0; i < n; ++i)
-			c[i] = text.charAt(r.nextInt(len));
+			sb.append(text.charAt(r.nextInt(len)));
 
-		return String.valueOf(c);
+		return sb.toString();
 	}
 
 	public static String getRandomTextEN(int n)
@@ -122,7 +126,7 @@ public final class StringUtil {
 		int len = alphabet.length();
 
 		for (int i = 0; i < len; ++i)
-			if (!s.contains(alphabet.charAt(i) + ""))
+			if (!s.contains(String.valueOf(alphabet.charAt(i))))
 				return false;
 
 		return true;
@@ -140,16 +144,16 @@ public final class StringUtil {
 
 	public static String join(String [] str, String delimiter, boolean skipBlanks)
 	{
-		String result = "";
+		StringBuilder sb = new StringBuilder();
 
 		for (String s : str) {
 			if (skipBlanks && s.isBlank())
 				continue;
 
-			result += s + delimiter;
+			sb.append(s).append(delimiter);
 		}
 
-		return result.substring(0, result.length() - delimiter.length());
+		return sb.substring(0, sb.length() - delimiter.length());
 	}
 	public static String join(String [] str, String delimiter)
 	{
@@ -192,11 +196,7 @@ public final class StringUtil {
 
 	public static String reverse(String str)
 	{
-		char [] c = str.toCharArray();
-
-		ArrayUtil.reverse(c);
-
-		return String.valueOf(c);
+		return new StringBuilder(str).reverse().toString();
 	}
 }
 
