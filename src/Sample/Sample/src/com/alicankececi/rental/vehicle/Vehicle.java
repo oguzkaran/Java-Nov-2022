@@ -1,6 +1,6 @@
 package com.alicankececi.rental.vehicle;
 
-public class Vehicle {
+public abstract class Vehicle {
     private String m_id;
     private String m_plate;
     private String m_brand;
@@ -72,4 +72,7 @@ public class Vehicle {
     {
         m_year = year;
     }
+
+    public abstract double calculateTax();
+
 }

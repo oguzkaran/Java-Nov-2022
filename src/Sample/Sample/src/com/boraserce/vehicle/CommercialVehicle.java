@@ -13,4 +13,9 @@ public class CommercialVehicle extends Vehicle {
     }
 
     //...
+
+    public double calculateTax()
+    {
+        return 1000;
+    }
 }

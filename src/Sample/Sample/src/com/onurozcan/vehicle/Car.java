@@ -21,4 +21,9 @@ public class Car extends PersonalVehicle {
         m_type = type;
     }
     //...
+
+    public double calculateTax()
+    {
+        return 2000;
+    }
 }

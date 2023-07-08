@@ -1,6 +1,7 @@
 package com.emrekantarci;
 
 import com.alicankececi.rental.vehicle.*;
+import com.fatihkarabulut.vehicle.commercial.LightTruck;
 import com.fatihkarabulut.vehicle.commercial.Taxi;
 import com.fatihkarabulut.vehicle.commercial.Truck;
 import com.onurozcan.vehicle.Bus;
@@ -41,6 +42,21 @@ public class VehicleFactory {
 
         return truck;
     }
+
+    private LightTruck createLightTruck()
+    {
+        LightTruck truck = new LightTruck();
+
+        truck.setId("1234569");
+        truck.setModel("TTTT");
+        truck.setYear(2023);
+        truck.setBrand("M.A.N");
+        truck.setPlate("34 UUU 238");
+        truck.setCc(50000);
+        truck.setMaxCapacity(5);
+
+        return truck;
+    }
     private Bus createBus()
     {
         Bus bus = new Bus();
@@ -74,10 +90,11 @@ public class VehicleFactory {
 
     public Vehicle createVehicle()
     {
-        return switch (m_random.nextInt(4)) {
+        return switch (m_random.nextInt(5)) {
             case 0 -> createCar();
             case 1 -> createBus();
             case 2 -> createTaxi();
+            case 3 -> createLightTruck();
             default -> createTruck();
         };
     }

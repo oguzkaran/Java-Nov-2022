@@ -23,4 +23,9 @@ public class Taxi extends CommercialVehicle {
     }
 
     //...
+
+    public double calculateTax()
+    {
+        return super.calculateTax() + 1500;
+    }
 }

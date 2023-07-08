@@ -2,25 +2,14 @@ package com.fatihkarabulut.vehicle.commercial;
 
 import com.boraserce.vehicle.CommercialVehicle;
 
-public class Truck extends CommercialVehicle {
-    private double m_length;
+public class LightTruck extends CommercialVehicle {
     private double m_maxCapacity;
 
     //...
 
-    public Truck()
+    public LightTruck()
     {
         super(false);
-    }
-
-    public double getLength()
-    {
-        return m_length;
-    }
-
-    public void setLength(double length)
-    {
-        m_length = length;
     }
 
     public double getMaxCapacity()
@@ -34,6 +23,6 @@ public class Truck extends CommercialVehicle {
     }
     public double calculateTax()
     {
-        return super.calculateTax() + m_maxCapacity * 1000;
+        return super.calculateTax() + m_maxCapacity * 500;
     }
 }

@@ -31,4 +31,9 @@ public class Bus extends CommercialVehicle {
     {
         m_passengerCount = passengerCount;
     }
+
+    public double calculateTax()
+    {
+        return m_passengerCount * 1000;
+    }
 }
