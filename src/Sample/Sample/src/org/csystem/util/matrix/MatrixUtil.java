@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: MatrixUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 24.06.2023
+	LAST UPDATE		: 14.07.2023
 
 	Utility class for matrix operations
 
@@ -12,7 +12,8 @@ package org.csystem.util.matrix;
 
 import org.csystem.util.array.ArrayUtil;
 
-import java.util.Random;
+import java.util.random.RandomGenerator;
+
 
 public final class MatrixUtil {
     private MatrixUtil()
@@ -37,10 +38,10 @@ public final class MatrixUtil {
         ArrayUtil.addBy(a, value);
     }
 
-    public static void fillRandomMatrix(Random random, int [][] a, int min, int bound)
+    public static void fillRandomMatrix(RandomGenerator randomGenerator, int [][] a, int min, int bound)
     {
         for (int[] array : a)
-            ArrayUtil.fillRandomArray(random, array, min, bound);
+            ArrayUtil.fillRandomArray(randomGenerator, array, min, bound);
     }
 
     public static boolean isSquareMatrix(int [][] a)
@@ -48,18 +49,18 @@ public final class MatrixUtil {
         return isMatrix(a) && a.length == a[0].length;
     }
 
-    public static int [][] getRandomMatrix(Random random, int m, int n, int min, int bound)
+    public static int [][] getRandomMatrix(RandomGenerator randomGenerator, int m, int n, int min, int bound)
     {
         int [][] a = new int[m][n];
 
-        fillRandomMatrix(random, a, min, bound);
+        fillRandomMatrix(randomGenerator, a, min, bound);
 
         return a;
     }
 
-    public static int [][] getRandomSquareMatrix(Random random, int n, int min, int bound)
+    public static int [][] getRandomSquareMatrix(RandomGenerator randomGenerator, int n, int min, int bound)
     {
-        return getRandomMatrix(random, n, n, min, bound);
+        return getRandomMatrix(randomGenerator, n, n, min, bound);
     }
 
     public static boolean isMatrix(int [][] a)

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: ArrayUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 02.07.2023
+	LAST UPDATE		: 14.07.2023
 
 	Utility class for array operations
 
@@ -10,7 +10,8 @@
 ------------------------------------------------------------*/
 package org.csystem.util.array;
 
-import java.util.Random;
+
+import java.util.random.RandomGenerator;
 
 public final class ArrayUtil {
     private ArrayUtil()
@@ -119,10 +120,10 @@ public final class ArrayUtil {
         }
     }
 
-    public static void fillRandomArray(Random random, int [] a, int min, int bound)
+    public static void fillRandomArray(RandomGenerator randomGenerator, int [] a, int min, int bound)
     {
         for (int i = 0; i < a.length; ++i)
-            a[i] = random.nextInt(min, bound);
+            a[i] = randomGenerator.nextInt(min, bound);
     }
 
     public static int [] getHistogramData(int [] a, int n)
@@ -135,11 +136,11 @@ public final class ArrayUtil {
         return counts;
     }
 
-    public static int [] getRandomArray(Random random, int count, int min, int bound)
+    public static int [] getRandomArray(RandomGenerator randomGenerator, int count, int min, int bound)
     {
         int [] a = new int[count];
 
-        fillRandomArray(random, a, min, bound);
+        fillRandomArray(randomGenerator, a, min, bound);
 
         return a;
     }

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: RandomIntArrayGenerator.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 21.05.2023
+	LAST UPDATE		: 14.07.2023
 
 	RandomIntArrayGenerator class that creates a randomly
 	generated array once per object
@@ -14,13 +14,14 @@ package org.csystem.util.generator.random;
 import org.csystem.util.array.ArrayUtil;
 
 import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public class RandomIntArrayGenerator {
     private final int [] m_numbers;
 
-    public RandomIntArrayGenerator(Random random, int count, int min, int bound)
+    public RandomIntArrayGenerator(RandomGenerator randomGenerator, int count, int min, int bound)
     {
-        m_numbers = ArrayUtil.getRandomArray(random, count, min, bound);
+        m_numbers = ArrayUtil.getRandomArray(randomGenerator, count, min, bound);
     }
 
     public int count()

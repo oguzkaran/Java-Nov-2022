@@ -23,6 +23,6 @@ public class LightTruck extends CommercialVehicle {
     }
     public double calculateTax()
     {
-        return super.calculateTax() + m_maxCapacity * 500;
+        return m_maxCapacity * 500;
     }
 }

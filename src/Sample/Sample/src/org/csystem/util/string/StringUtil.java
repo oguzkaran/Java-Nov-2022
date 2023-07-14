@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: StringUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 07.07.2023
+	LAST UPDATE		: 14.07.2023
 	
 	Utility class for string operations
 	
@@ -10,9 +10,7 @@
 ------------------------------------------------------------*/
 package org.csystem.util.string;
 
-import org.csystem.util.array.ArrayUtil;
-
-import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public final class StringUtil {
 	private static final String LETTERS_TR = "abcçdefgğhıijklmnoöprsştuüvyz";
@@ -60,35 +58,25 @@ public final class StringUtil {
 		return countString(s1.toLowerCase(), s2.toLowerCase());
 	}
 
-	public static String getRandomText(Random r, int n, String text)
+	public static String getRandomText(RandomGenerator randomGenerator, int n, String text)
 	{
 		StringBuilder sb = new StringBuilder(n);
 		int len = text.length();
 
 		for (int i = 0; i < n; ++i)
-			sb.append(text.charAt(r.nextInt(len)));
+			sb.append(text.charAt(randomGenerator.nextInt(len)));
 
 		return sb.toString();
 	}
 
-	public static String getRandomTextEN(int n)
+	public static String getRandomTextEN(RandomGenerator randomGenerator, int n)
 	{
-		return getRandomTextEN(new Random(), n);
+		return getRandomText(randomGenerator, n, LETTERS_ALL_EN);
 	}
 
-	public static String getRandomTextEN(Random r, int n)
+	public static String getRandomTextTR(RandomGenerator randomGenerator, int n)
 	{
-		return getRandomText(r, n, LETTERS_ALL_EN);
-	}
-
-	public static String getRandomTextTR(int n)
-	{
-		return getRandomTextTR(new Random(), n);
-	}
-
-	public static String getRandomTextTR(Random r, int n)
-	{
-		return getRandomText(r, n, LETTERS_ALL_TR);
+		return getRandomText(randomGenerator, n, LETTERS_ALL_TR);
 	}
 
 	public static boolean isPalindrome(String s)
