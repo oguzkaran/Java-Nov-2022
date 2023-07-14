@@ -1,6 +1,8 @@
 package com.alicankececi.rental.vehicle;
 
-public abstract class Vehicle {
+import com.karandev.app.tax.ITax;
+
+public abstract class Vehicle implements ITax {
     private String m_id;
     private String m_plate;
     private String m_brand;
@@ -72,7 +74,5 @@ public abstract class Vehicle {
     {
         m_year = year;
     }
-
-    public abstract double calculateTax();
 
 }
