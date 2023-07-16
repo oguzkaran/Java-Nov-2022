@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: Console.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 15.07.2023
+	LAST UPDATE		: 16.07.2023
 
 	Utility class for standard input and standard output operations
 
@@ -65,6 +65,61 @@ public final class Console {
                 System.out.print(errorMessage);
             }
         }
+    }
+
+    public static long readLong()
+    {
+        return readLong("");
+    }
+
+    public static long readLong(String message)
+    {
+        return readLong(message, "");
+    }
+
+    public static long readLong(String message, String errorMessage)
+    {
+        while (true) {
+            try {
+                System.out.print(message);
+
+                return Long.parseLong(KB.nextLine());
+            }
+            catch (NumberFormatException ignore) {
+                System.out.print(errorMessage);
+            }
+        }
+    }
+
+    public static String readString()
+    {
+        return readString("");
+    }
+
+    public static String readString(String message)
+    {
+        write(message);
+        return KB.nextLine();
+    }
+
+    public static char readChar()
+    {
+        return readChar("");
+    }
+
+    public static char readChar(String message)
+    {
+        return readChar(message, "");
+    }
+
+    public static char readChar(String message, String errorMessage)
+    {
+        String str;
+
+        while ((str = readString(message)).length() != 1)
+            write(errorMessage);
+
+        return str.charAt(0);
     }
 
     public static void write(Object arg)
