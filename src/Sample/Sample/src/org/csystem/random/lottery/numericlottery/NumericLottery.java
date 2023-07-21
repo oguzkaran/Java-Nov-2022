@@ -1,9 +1,9 @@
 package org.csystem.random.lottery.numericlottery;
 
-import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public class NumericLottery {
-    private final Random m_random;
+    private final RandomGenerator m_randomGenerator;
 
     private static int [] getNumbers(boolean [] flags)
     {
@@ -25,7 +25,7 @@ public class NumericLottery {
             int val;
 
             for (;;) {
-                val = m_random.nextInt(1, 50);
+                val = m_randomGenerator.nextInt(1, 50);
                 if (!flags[val])
                     break;
             }
@@ -35,14 +35,9 @@ public class NumericLottery {
         return flags;
     }
 
-    public NumericLottery()
+    public NumericLottery(RandomGenerator randomGenerator)
     {
-        m_random = new Random();
-    }
-
-    public NumericLottery(Random r)
-    {
-        m_random = r;
+        m_randomGenerator = randomGenerator;
     }
 
     public int [] getNumbers()

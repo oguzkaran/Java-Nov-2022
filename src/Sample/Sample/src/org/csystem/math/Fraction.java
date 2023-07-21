@@ -1,4 +1,3 @@
-
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması: Bir kesri temsil eden Fraction isimli sınıfı aşağıdaki açıklamalara göre yazınız
 	Açıklamalar:
@@ -7,8 +6,7 @@
 	+ Sınıfın ilgili set ve get metotları yazılacaktır
 
 	+ Pay'ın sıfırdan farklı, paydanın sıfır olması durumunda tanımsızlığa ilişkin bir mesaj verilecektir, pay ve paydanın
-	her ikisinin birden sıfır olması durumunda belirsizliğe ilişkin mesaj verilecektir. Her iki durumda da program
-	sonlandırılacaktır
+	her ikisinin birden sıfır olması durumunda belirsizliğe ilişkin mesajla birlikte NumberFormatException fırlatılacaktır.
 
 	+ Kesir her durumda sadeleşmiş bir biçimde tutulacaktır. Örneğin kesrin pay ve paydası sırasıyla 4 ve 18 olarak
 	verildiğinde kesir 2 / 9 olarak tutulacaktır.

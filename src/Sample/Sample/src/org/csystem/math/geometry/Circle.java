@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: Circle.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 13.05.2023
+	LAST UPDATE		: 21.07.2023
 
 	Circle class that represents a circle
 
@@ -31,6 +31,9 @@ public class Circle {
 
     public void setRadius(double radius)
     {
+        if (radius < 0)
+            throw new IllegalArgumentException(String.format("Radius can not be negative!...->%f", radius));
+
         m_radius = Math.abs(radius);
     }
 
