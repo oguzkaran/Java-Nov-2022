@@ -8,15 +8,24 @@ import org.csystem.util.thread.ThreadUtil;
 import java.io.IOException;
 
 public class DemoApp {
+    private static void doForDevice(Device device, DeviceOperation deviceOperation) throws IOException
+    {
+        try (device; deviceOperation) {
+            deviceOperation.doForDevice();
+        }
+    }
+    
     public static void run()
     {
         while (true) {
             ThreadUtil.sleep(1000);
             Console.writeLine("-------------------------------------------------------------------");
 
-            try (Device dev = new Device("www.csystem.org:50500/app/dev");
-                 DeviceOperation deviceOperation = new DeviceOperation(dev)) {
-                deviceOperation.doForDevice();
+            try {
+                Device dev = new Device("www.csystem.org:50500/app/dev");
+                DeviceOperation deviceOperation = new DeviceOperation(dev);
+
+                doForDevice(dev, deviceOperation);
             }
             catch (IllegalArgumentException ignore) {
                 Console.writeLine("Invalid URL!...");
@@ -27,6 +36,7 @@ public class DemoApp {
             catch (IOException ignore) {
                 Console.writeLine("Problem in IO!...");
             }
+
 
             Console.writeLine("-------------------------------------------------------------------");
         }

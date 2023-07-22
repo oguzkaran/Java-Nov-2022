@@ -1,50 +1,7 @@
-/*----------------------------------------------------------------------------------------------------------------------
-	Sınıf Çalışması: Bir kesri temsil eden Fraction isimli sınıfı aşağıdaki açıklamalara göre yazınız
-	Açıklamalar:
-	+ Sınıf Matematikteki bir kesri temsil ettiğinden pay (numerator) ve payda (denominator) değerleri tutulacaktır
-
-	+ Sınıfın ilgili set ve get metotları yazılacaktır
-
-	+ Pay'ın sıfırdan farklı, paydanın sıfır olması durumunda tanımsızlığa ilişkin bir mesaj verilecektir, pay ve paydanın
-	her ikisinin birden sıfır olması durumunda belirsizliğe ilişkin mesajla birlikte NumberFormatException fırlatılacaktır.
-
-	+ Kesir her durumda sadeleşmiş bir biçimde tutulacaktır. Örneğin kesrin pay ve paydası sırasıyla 4 ve 18 olarak
-	verildiğinde kesir 2 / 9 olarak tutulacaktır.
-
-	+ Kesir negatif ise işaret payda bulunacaktır. Örneğin kesrin pay ve paydası sırasıyla 3 ve -4 olarak verilmişse
-	kesir -3 / 4 biçiminde tutulacaktır
-
-	+ Kesrin pay ve paydasının ikisinin birden negatif olması durumunda kesir pozitif olarak tutulacaktır
-
-	+ Kesrin payının sıfır olması durumunda payda ne olursa olsun 1(bir) yapılacaktır
-
-	+ Sınıfın iki kesri toplayan, bir kesir ile bir tamsayıyı toplayan metotları olacaktır. Aynı işlemler
-	 çıkarma, çarpma ve bölme için de yapılacaktır
-
-	+ Sınıfın kesri 1(bir) artıran ve bir azaltan inc ve dec metotları yazılacaktır
-
-	+ Sınıfın toString metodu şu formatta yazı döndürecektir:
-	    3 / 10 kesri için -> 3 / 10 = 3.333333
-	    10 / 1 kesri için -> 10
-
-	 + Sınıfın default ctor'u "0 / 1" kesrini temsil eden nesneyi yaratmak için kullanılabilecektir
-
-	 + Sınıfın compareTo metodu iki kesrin büyüklük küçüklük karşılaştırmasını yapacaktır. String sınıfının compareTo
-	 metodunun mantığına göre tasarlayınız
-
-	 + Kesrin double türden ondalık değerini döndüren getRealValue metodu yazılacaktır
-
-	 + Sınıfın public bölümünü değiştirmeden istediğiniz değişikliği ve eklemeleri yapabilirsiniz
-
-	 + Sınıfın içerisinde bildirilen metotlarda
-            throw new UnsupportedOperationException("TODO");
-        biçimindeki deyim geri dönüş değeri olan metotlar error vermesin diye yazışmıştır. Bu konu ileride ele alınacaktır.
-        Metodu yazarken bu deyimi kaldırınız
-----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------
 	FILE		: Fraction.java
 	AUTHOR		: Java-Nov-2022 Group
-	LAST UPDATE	: 21.05.2023
+	LAST UPDATE	: 22.07.2023
 
 	Fraction class that represents fraction
 
@@ -57,19 +14,84 @@ public class Fraction {
     private int m_a;
     private int m_b;
 
+    private static Fraction add(int a1, int b1, int a2, int b2)
+    {
+        return new Fraction(a1 * b2 + a2 * b1, b1 * b2);
+    }
+
+    private static Fraction subtract(int a1, int b1, int a2, int b2)
+    {
+        return add(a1, b1, -a2, b2);
+    }
+
+    private static Fraction multiply(int a1, int b1, int a2, int b2)
+    {
+        return new Fraction(a1 * a2, b1 * b2);
+    }
+
+    private static Fraction divide(int a1, int b1, int a2, int b2)
+    {
+        return multiply(a1, b1, b2, a2);
+    }
+
+    private static void check(int a, int b)
+    {
+        if (b == 0) {
+            if (a == 0)
+                throw new NumberFormatException("Indeterminate");
+
+            throw new NumberFormatException("Undefined");
+        }
+    }
+
+    private void setSign()
+    {
+        if (m_b < 0) {
+            m_b = -m_b;
+            m_a = -m_a;
+        }
+    }
+
+    private void simplify()
+    {
+        int min = Math.min(m_b, Math.abs(m_a));
+
+        for (int i = min; i >= 2; --i)
+            if (m_a % i == 0 && m_b % i == 0) {
+                m_a /= i;
+                m_b /= i;
+                break;
+            }
+    }
+
+    private void set(int a, int b)
+    {
+        if (a == 0) {
+            m_a = 0;
+            m_b = 1;
+            return;
+        }
+        m_a = a;
+        m_b = b;
+        setSign();
+        simplify();
+    }
+
     public Fraction()
     {
-        throw new UnsupportedOperationException("TODO:");
+        m_b = 1;
     }
 
     public Fraction(int a)
     {
-        throw new UnsupportedOperationException("TODO:");
+        m_a = a;
+        m_b = 1;
     }
 
     public Fraction(int a, int b)
     {
-        throw new UnsupportedOperationException("TODO:");
+        check(a, b);
+        set(a, b);
     }
 
     public int getNumerator()
@@ -79,7 +101,10 @@ public class Fraction {
 
     public void setNumerator(int val)
     {
-        throw new UnsupportedOperationException("TODO:");
+        if (val == m_a)
+            return;
+
+        set(val, m_b);
     }
 
     public int getDenominator()
@@ -89,71 +114,81 @@ public class Fraction {
 
     public void setDenominator(int val)
     {
-        throw new UnsupportedOperationException("TODO:");
+        if (val == m_b)
+            return;
+
+        check(m_a, val);
+        set(m_a, val);
     }
 
     public double getRealValue()
     {
-        throw new UnsupportedOperationException("TODO:");
+        return (double)m_a / m_b;
     }
 
     public Fraction add(Fraction other)
     {
-        throw new UnsupportedOperationException("TODO:");
+        return add(m_a, m_b, other.m_a, other.m_b);
     }
 
     public Fraction add(int val)
     {
-        throw new UnsupportedOperationException("TODO:");
+        return add(m_a, m_b, val, 1);
     }
 
     public Fraction subtract(Fraction other)
     {
-        throw new UnsupportedOperationException("TODO:");
+        return subtract(m_a, m_b, other.m_a, other.m_b);
     }
 
     public Fraction subtract(int val)
     {
-        throw new UnsupportedOperationException("TODO:");
+        return subtract(m_a, m_b, val, 1);
     }
 
     public Fraction multiply(Fraction other)
     {
-        throw new UnsupportedOperationException("TODO:");
+        return multiply(m_a, m_b, other.m_a, other.m_b);
     }
 
     public Fraction multiply(int val)
     {
-        throw new UnsupportedOperationException("TODO:");
+        return multiply(m_a, m_b, val, 1);
     }
 
     public Fraction divide(Fraction other)
     {
-        throw new UnsupportedOperationException("TODO:");
+        return divide(m_a, m_b, other.m_a, other.m_b);
     }
 
     public Fraction divide(int val)
     {
-        throw new UnsupportedOperationException("TODO:");
+        return divide(m_a, m_b, val, 1);
     }
 
     public void inc()
     {
-        throw new UnsupportedOperationException("TODO:");
+        m_a += m_b;
     }
 
     public void dec()
     {
-        throw new UnsupportedOperationException("TODO:");
+        m_a -= m_b;
     }
 
     public int compareTo(Fraction other)
     {
-        throw new UnsupportedOperationException("TODO:");
+        //Burada Ortak Katların En Küçüğü (Least Common Multiplier) bulunabili
+        return m_a * other.m_b - other.m_a * m_b;
+    }
+
+    public boolean equals(Object other)
+    {
+        return other instanceof Fraction f && m_a == f.m_a && m_b == f.m_b;
     }
 
     public String toString()
     {
-        throw new UnsupportedOperationException("TODO:");
+        return String.format("%d%s", m_a, m_b != 1 ? String.format(" / %d = %f", m_b, getRealValue()) : "");
     }
 }
