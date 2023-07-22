@@ -1,10 +1,12 @@
 /*-----------------------------------------------------------------------------------------------------------------------
-	Anahtar Notlar: Object sınıfının equals metodu nesne için mantıksal bir eşitlik karşılaştırması söz konusu ise ilgili
-	sınıf tarafından override edilir. equals metodunun parametresi Object türündendir. Bu metodu override eden
-	programcı parametre ile verilen Object referansının dinamik türünün ilgili türü kapsayıp kapsamadığına da bakar.
-	Bu işlem için tipik instanceof operatörü kullanılır. equals metodunun da toString gibi çağrıldığı durumlar vardır.
-	Java programcısı equals metodunu yazdığı sınıf için uygunsa kesinlikle override eder. Object sınıfının equals metodu
-	adres karşılaştırması yapar
+	Sınıf Çalışması: Bir kaynaktan (source) karakterler geliyor olsun. Karakterlerin sıra numarası int türden verilsin.
+	Artık kaynakta karakter kalmamışsa -1 değeri elde edilsin. Ayrıca karakterler için çeşitli işlemler yapılabilsin.
+	Bunlar örneğin, kaç tane whitespace olduğu, bir java dosysı ise karakterlerden bir tokenizing işlemi yapılması vb.
+	işlemler olabilsin. Buna bu işlemi gerçekleştiren yani karakterlerin kaynağından bağımsız hale getiren, bu karakterler
+	ile ne yapılacağını da bağımsız hale getiren yani bunları soyutlayan (abstracttion) tasarımı yapıp ilgili türleri
+	yazınız.
+
+	Not: Bu tasarım şu ana kdar gördüğümüz konular kullanılarak yapılmıştır. İleride daha iyileri yapılabilecektir
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
