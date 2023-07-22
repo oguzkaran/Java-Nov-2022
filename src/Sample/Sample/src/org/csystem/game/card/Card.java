@@ -51,6 +51,11 @@ public class Card {
       throw new UnsupportedOperationException("TODO:Kupa-Papaz");
    }
 
+   public boolean equals(Object other)
+   {
+      return other instanceof Card c && m_type == c.m_type && m_value == c.m_value;
+   }
+
    public String toString()
    {
       return String.format("%s-%s", m_type.toString(), m_value.toString());

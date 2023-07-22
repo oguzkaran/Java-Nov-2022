@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: AnalyticalCircle.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 17.06.2023
+	LAST UPDATE		: 22.07.2023
 
 	AnalyticalCircle class that represents a circle
 	int cartesian plane
@@ -17,7 +17,7 @@ import org.csystem.math.geometry.MutablePoint;
 public class AnalyticalCircle extends Circle {
     private static final double DELTA = 0.00001;
 
-    private final MutablePoint m_mutablePoint;
+    private final MutablePoint m_center;
 
     public AnalyticalCircle()
     {
@@ -37,27 +37,27 @@ public class AnalyticalCircle extends Circle {
     public AnalyticalCircle(double radius, double x, double y)
     {
         super(radius);
-        m_mutablePoint = MutablePoint.ofCartesian(x, y);
+        m_center = MutablePoint.ofCartesian(x, y);
     }
 
     public double getX()
     {
-        return m_mutablePoint.getX();
+        return m_center.getX();
     }
 
     public void setX(double x)
     {
-        m_mutablePoint.setX(x);
+        m_center.setX(x);
     }
 
     public double getY()
     {
-        return m_mutablePoint.getY();
+        return m_center.getY();
     }
 
     public void setY(double y)
     {
-        m_mutablePoint.setY(y);
+        m_center.setY(y);
     }
 
     public void set(double x, double y)
@@ -68,7 +68,7 @@ public class AnalyticalCircle extends Circle {
 
     public double centerDistance(AnalyticalCircle other)
     {
-        return m_mutablePoint.distance(other.m_mutablePoint);
+        return m_center.distance(other.m_center);
     }
 
     public boolean isTangent(AnalyticalCircle other)
@@ -78,11 +78,21 @@ public class AnalyticalCircle extends Circle {
 
     public void offset(double dx, double dy)
     {
-        m_mutablePoint.offset(dx, dy);
+        m_center.offset(dx, dy);
     }
 
     public void offset(double dxy)
     {
         offset(dxy, dxy);
+    }
+
+    public boolean equals(Object other)
+    {
+        return other instanceof AnalyticalCircle ac && super.equals(other) && m_center.equals(ac.m_center);
+    }
+
+    public String toString()
+    {
+        return String.format("%s, Center:%s", super.toString(), m_center);
     }
 }

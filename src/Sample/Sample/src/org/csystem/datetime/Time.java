@@ -11,21 +11,13 @@
 
         - Sınıf 24 saat dilimine göre değerleri ele alacaktır
 
-        - Sınıfın içerisinde bildirilen metotlarda
-
-            throw new UnsupportedOperationException("TODO");
-
-        biçimindeki deyim
-        geri dönüş değeri olan metotlar error vermesin diye yazışmıştır. Bu konu ileride ele alınacaktır. İlgili metodu
-        yazarken bu deyimi kaldırınız
-
         - Sınıfa ilişkin test kodlarını da yazınız
 -----------------------------------------------------------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------
 	FILE		: Time.java
 	AUTHOR		: Java-Nov-2022 Group
-	LAST UPDATE	: 05.06.2023
+	LAST UPDATE	: 22.07.2023
 
 	Time class that represents a time
 
@@ -79,6 +71,11 @@ public class Time {
     public void setMillisecond(int millisecond)
     {
         throw new UnsupportedOperationException("TODO:");
+    }
+
+    public boolean equals(Object other)
+    {
+        throw new UnsupportedOperationException("TODO");
     }
 
     public String toString()

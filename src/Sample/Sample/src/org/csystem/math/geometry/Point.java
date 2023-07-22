@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: Point.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 27.05.2023
+	LAST UPDATE		: 22.07.2023
 	
 	Immutable Point class that represents a point in cartesian plane
 	
@@ -13,6 +13,7 @@ package org.csystem.math.geometry;
 import static java.lang.Math.*;
 
 public class Point {
+	private static final double DELTA = 0.00001;
 	private final double m_x, m_y;
 
 	private Point(double a, double b, boolean polar)
@@ -72,6 +73,10 @@ public class Point {
 		return distance(other.m_x, other.m_y);
 	}
 
+	public boolean equals(Object other)
+	{
+		return other instanceof Point p && abs(m_x - p.m_x) < DELTA && abs(m_y - p.m_y) < DELTA;
+	}
 	public String toString()
 	{
 		return PointCommon.toString(m_x, m_y);

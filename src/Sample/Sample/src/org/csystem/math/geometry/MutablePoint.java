@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: MutablePoint.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 27.05.2023
+	LAST UPDATE		: 22.07.2023
 	
 	MutablePoint class that represents a point in cartesian plane
 	
@@ -13,6 +13,7 @@ package org.csystem.math.geometry;
 import static java.lang.Math.*;
 
 public class MutablePoint {
+	private static final double DELTA = 0.000001;
 	private double m_x, m_y;
 
 	private MutablePoint(double a, double b, boolean polar)
@@ -92,7 +93,11 @@ public class MutablePoint {
 		m_x += dx;
 		m_y += dy;
 	}
-	
+
+	public boolean equals(Object other)
+	{
+		return other instanceof MutablePoint p && abs(m_x - p.m_x) < DELTA && abs(m_y - p.m_y) < DELTA;
+	}
 	public String toString()
 	{
 		return PointCommon.toString(m_x, m_y);

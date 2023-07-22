@@ -11,7 +11,7 @@
 /*----------------------------------------------------------
 	FILE			: MutableComplex.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 13.05.2023
+	LAST UPDATE		: 22.07.2023
 	
 	MutableComplex class that represents a complex number
 	
@@ -20,9 +20,13 @@
 ------------------------------------------------------------*/
 package org.csystem.math;
 
+import org.csystem.math.geometry.Point;
+
+import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
 public class MutableComplex {
+	private static final double DELTA = 0.00001;
 	public double m_real;
 	public double m_imag;
 	
@@ -159,7 +163,12 @@ public class MutableComplex {
 	{
 		return getLength();
 	}
-	
+
+	public boolean equals(Object other)
+	{
+		return other instanceof MutableComplex z && abs(m_real - z.m_real) < DELTA && abs(m_imag - z.m_imag) < DELTA;
+	}
+
 	public String toString()
 	{
 		return String.format("(%.2f, %.2f)", m_real, m_imag);
