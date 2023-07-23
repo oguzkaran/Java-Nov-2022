@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: StringList.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 07.07.2023
+	LAST UPDATE		: 23.07.2023
 
 	StringList class
 
@@ -13,7 +13,7 @@ package org.csystem.collection.string;
 import java.util.ArrayList;
 
 public class StringList {
-    private final ArrayList m_list = new ArrayList();
+    private final ArrayList<String> m_list = new ArrayList<>();
 
     public boolean add(String str)
     {

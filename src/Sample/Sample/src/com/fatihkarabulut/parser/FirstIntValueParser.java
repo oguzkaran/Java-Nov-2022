@@ -2,6 +2,7 @@ package com.fatihkarabulut.parser;
 
 import org.csystem.parser.character.ICharacterSourceParser;
 import org.csystem.parser.character.source.ICharacterSource;
+import org.csystem.util.console.Console;
 
 public class FirstIntValueParser implements ICharacterSourceParser {
     private int m_value;
