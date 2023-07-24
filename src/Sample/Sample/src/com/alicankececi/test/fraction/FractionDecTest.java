@@ -1,24 +1,23 @@
-package org.csystem.math.test;
+package com.alicankececi.test.fraction;
 
 import org.csystem.math.Fraction;
-import org.csystem.math.test.factory.FractionFactory;
+import com.alicankececi.test.fraction.factory.FractionFactory;
 import org.csystem.util.console.Console;
 
-public class FractionEqualsTest {
+public class FractionDecTest {
     private static void run()
     {
-
         FractionFactory factory = new FractionFactory();
 
         int count = Console.readInt("Bir sayı giriniz: ");
 
         while (count-- > 0) {
             try {
-                Fraction f1 = factory.createRandomFraction(1, 5);
-                Fraction f2 = factory.createRandomFraction(1, 5);
+                Fraction f = factory.createRandomFraction(-10, 10);
                 System.out.println("--------------------------------------------------------------");
-                Console.writeLine("f1 = %s, f2 = %s ", f1, f2);
-                Console.writeLine(f1.equals(f2) ? "Same Fractions" : "Different Fractions");
+                Console.writeLine("f = %s", f);
+                f.dec();
+                Console.writeLine("f - 1 = %s", f);
                 System.out.println("--------------------------------------------------------------");
             }
             catch (NumberFormatException ignore)

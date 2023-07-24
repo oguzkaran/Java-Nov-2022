@@ -1,7 +1,7 @@
-package org.csystem.math.test;
+package com.alicankececi.test.fraction;
 
 import org.csystem.math.Fraction;
-import org.csystem.math.test.factory.FractionFactory;
+import com.alicankececi.test.fraction.factory.FractionFactory;
 import org.csystem.util.console.Console;
 
 public class FractionGetterSetterTest {

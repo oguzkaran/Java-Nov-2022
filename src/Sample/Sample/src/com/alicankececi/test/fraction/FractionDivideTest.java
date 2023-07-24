@@ -1,10 +1,10 @@
-package org.csystem.math.test;
+package com.alicankececi.test.fraction;
 
 import org.csystem.math.Fraction;
-import org.csystem.math.test.factory.FractionFactory;
+import com.alicankececi.test.fraction.factory.FractionFactory;
 import org.csystem.util.console.Console;
 
-public class FractionCompareToTest {
+public class FractionDivideTest {
     private static void run()
     {
         FractionFactory factory = new FractionFactory();
@@ -13,11 +13,11 @@ public class FractionCompareToTest {
 
         while (count-- > 0) {
             try {
-                Fraction f1 = factory.createRandomFraction(-5, 5);
-                Fraction f2 = factory.createRandomFraction(-5, 5);
+                Fraction f1 = factory.createRandomFraction(-10, 10);
+                Fraction f2 = factory.createRandomFraction(-10, 10);
                 System.out.println("--------------------------------------------------------------");
                 Console.writeLine("f1 = %s, f2 = %s ", f1, f2);
-                Console.writeLine(f1.compareTo(f2) > 0 ? "f1 > f2" : f1.compareTo(f2) == 0 ? "f1 = f2" : "f1 < f2");
+                Console.writeLine("f1 / f2 = %s", f1.divide(f2));
                 System.out.println("--------------------------------------------------------------");
             }
             catch (NumberFormatException ignore)

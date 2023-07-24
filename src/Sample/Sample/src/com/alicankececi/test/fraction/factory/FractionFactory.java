@@ -1,4 +1,4 @@
-package org.csystem.math.test.factory;
+package com.alicankececi.test.fraction.factory;
 
 import org.csystem.math.Fraction;
 
