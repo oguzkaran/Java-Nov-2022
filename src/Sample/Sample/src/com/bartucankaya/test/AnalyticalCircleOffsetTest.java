@@ -26,7 +26,7 @@ public class AnalyticalCircleOffsetTest {
 
         while (count-- > 0) {
             System.out.println("--------------------------------------------------------------");
-            AnalyticalCircle analyticalCircle = factory.createRandomAnalyticalCircle(-100, 100);
+            AnalyticalCircle analyticalCircle = factory.createRandomAnalyticalCircle(50, 100);
             double dx = random.nextDouble(-100, 100);
             double dy = random.nextDouble(-100, 100);
 

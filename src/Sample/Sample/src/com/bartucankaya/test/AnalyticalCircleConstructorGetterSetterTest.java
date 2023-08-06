@@ -28,7 +28,7 @@ public class AnalyticalCircleConstructorGetterSetterTest {
 
         while (count-- > 0) {
             System.out.println("--------------------------------------------------------------");
-            print(factory.createRandomAnalyticalCircle(-100, 100));
+            print(factory.createRandomAnalyticalCircle(50, 100));
             System.out.println("--------------------------------------------------------------");
         }
     }

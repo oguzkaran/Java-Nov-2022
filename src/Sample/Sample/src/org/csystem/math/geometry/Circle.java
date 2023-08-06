@@ -36,7 +36,7 @@ public class Circle {
         if (radius < 0)
             throw new IllegalArgumentException(String.format("Radius can not be negative!...->%f", radius));
 
-        m_radius = Math.abs(radius);
+        m_radius = radius;
     }
 
     public double getArea()

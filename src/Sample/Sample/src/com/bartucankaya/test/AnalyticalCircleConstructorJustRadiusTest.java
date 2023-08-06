@@ -25,7 +25,7 @@ public class AnalyticalCircleConstructorJustRadiusTest {
 
         while (count-- > 0) {
             System.out.println("--------------------------------------------------------------");
-            double radius = random.nextDouble(-100, 100);
+            double radius = random.nextDouble(50, 100);
             print(new AnalyticalCircle(radius));
             System.out.println("--------------------------------------------------------------");
         }

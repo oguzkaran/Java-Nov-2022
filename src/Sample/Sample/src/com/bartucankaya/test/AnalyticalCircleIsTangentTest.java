@@ -33,7 +33,7 @@ public class AnalyticalCircleIsTangentTest {
         int count = kb.nextInt();
 
         while (count-- > 0) {
-            AnalyticalCircle analyticalCircle = factory.createRandomAnalyticalCircle(-100, 100);
+            AnalyticalCircle analyticalCircle = factory.createRandomAnalyticalCircle(50, 100);
             AnalyticalCircle other = new AnalyticalCircle(random.nextDouble(1, 100));
             double sumOfRadius = analyticalCircle.getRadius() + other.getRadius();
 

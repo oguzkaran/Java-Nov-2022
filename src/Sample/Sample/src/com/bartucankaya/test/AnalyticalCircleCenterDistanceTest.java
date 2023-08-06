@@ -36,8 +36,8 @@ public class AnalyticalCircleCenterDistanceTest {
 
         while (count-- > 0) {
             System.out.println("--------------------------------------------------------------");
-            AnalyticalCircle analyticalCircle = factory.createRandomAnalyticalCircle(-100, 100);
-            AnalyticalCircle other = factory.createRandomAnalyticalCircle(-100, 100);
+            AnalyticalCircle analyticalCircle = factory.createRandomAnalyticalCircle(100, 200);
+            AnalyticalCircle other = factory.createRandomAnalyticalCircle(100, 200);
 
             print(analyticalCircle);
             print(other);
