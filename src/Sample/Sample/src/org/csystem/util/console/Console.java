@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: Console.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 21.07.2023
+	LAST UPDATE		: 20.08.2023
 
 	Utility class for standard input and standard output operations
 
@@ -141,9 +141,16 @@ public final class Console {
         System.out.println();
     }
 
+
+
     public static void writeLine(String format, Object...args)
     {
         write(format + "\n", args);
+    }
+
+    public static void writeErrLine(String format, Object...args)
+    {
+        System.err.printf(format + "\n", args);
     }
     //...
 }

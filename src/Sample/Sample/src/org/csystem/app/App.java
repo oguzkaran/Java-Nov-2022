@@ -3,8 +3,6 @@
 -----------------------------------------------------------------------------------------------------------------------*/
 package org.csystem.app;
 
-import java.util.ArrayList;
-
 class App {
 	public static void main(String[] args)
 	{
