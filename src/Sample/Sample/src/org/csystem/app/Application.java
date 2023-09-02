@@ -3,37 +3,33 @@ package org.csystem.app;
 import org.csystem.util.console.Console;
 
 import java.io.IOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
+import java.nio.file.*;
 
 import static org.csystem.util.console.commandline.CommandLineArgsUtil.checkLengthEquals;
 
 public class Application {
     public static void run(String[] args)
     {
-        checkLengthEquals(args.length, 1, "Wrong number of arguments!...");
+        checkLengthEquals(args.length, 2, "Wrong number of arguments!...");
 
         try {
-            Path path = Path.of(args[0]);
-
-            if (Files.exists(path))
-                if (Files.isDirectory(path))
-                    Console.writeLine("%s %s", path.getFileName(), Files.deleteIfExists(path) ? "deleted" : "not deleted");
-                else
-                    Console.writeLine("'%s' is not a directory!...", path.getFileName());
-            else
-                Console.writeErrLine("'%s' not exists!...", path.getFileName());
+            Files.move(Path.of(args[0]), Path.of(args[1]));
+            Console.writeLine("'%s' moved successfully", args[0]);
         }
         catch (DirectoryNotEmptyException ignore) {
-            Console.writeErrLine("Directory not empty!...");
+            Console.writeErrLine("'%s' directory not empty", args[1]);
+        }
+        catch (FileAlreadyExistsException ignore) {
+            Console.writeErrLine("'%s' already exists", args[1]);
+        }
+        catch (NoSuchFileException ignore) {
+            Console.writeErrLine("'%s' not exist", args[0]);
         }
         catch (IOException ignore) {
             Console.writeErrLine("I/O problem occurs!...");
         }
         catch (InvalidPathException ex) {
-            Console.writeErrLine("'%s' is invalid", ex.getInput());
+            Console.writeErrLine("'%s' is invalid path", ex.getInput());
         }
     }
 
