@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: ArrayUtil.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 14.07.2023
+	LAST UPDATE		: 10.09.2023
 
 	Utility class for array operations
 
@@ -196,6 +196,14 @@ public final class ArrayUtil {
     {
         for (int [] array : a)
             print(n, array);
+    }
+
+    public static void print(byte [] data, int startIndex, int count)
+    {
+        for (int i = 0; i < count; ++i)
+            System.out.printf("%d ", data[startIndex + i]);
+
+        System.out.println();
     }
 
     public static void reverse(int [] a)
