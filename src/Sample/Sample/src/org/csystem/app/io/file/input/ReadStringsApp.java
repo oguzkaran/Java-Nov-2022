@@ -1,12 +1,11 @@
 package org.csystem.app.io.file.input;
 
 import org.csystem.util.console.Console;
+import org.csystem.util.converter.BitConverter;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
 
 import static org.csystem.util.console.commandline.CommandLineArgsUtil.checkLengthEquals;
 
@@ -19,16 +18,16 @@ public class ReadStringsApp {
             return false;
 
         if (result != dataLength.length)
-            throw new IOException("Invalid file format!...");
+            throw new IOException("Invalid file format!!...");
 
-        byte [] data = new byte[ByteBuffer.wrap(dataLength).getInt()];
+        byte [] data = new byte[BitConverter.toInt(dataLength)];
 
         result = fis.read(data);
 
         if (result != data.length)
             throw new IOException("Invalid file format!...");
 
-        Console.writeLine(new String(data, StandardCharsets.UTF_8));
+        Console.writeLine(BitConverter.toString(data));
 
         return true;
     }

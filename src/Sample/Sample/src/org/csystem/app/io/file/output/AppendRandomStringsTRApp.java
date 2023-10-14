@@ -1,13 +1,12 @@
 package org.csystem.app.io.file.output;
 
 import org.csystem.util.console.Console;
+import org.csystem.util.converter.BitConverter;
 import org.csystem.util.string.StringUtil;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 import static org.csystem.util.console.commandline.CommandLineArgsUtil.checkLengthEquals;
@@ -20,8 +19,8 @@ public class AppendRandomStringsTRApp {
 
     private static void writeString(String str, FileOutputStream fos) throws IOException
     {
-        byte [] data = str.getBytes(StandardCharsets.UTF_8);
-        byte [] dataLength = ByteBuffer.allocate(Integer.BYTES).putInt(data.length).array();
+        byte [] data = BitConverter.getBytes(str);
+        byte [] dataLength = BitConverter.getBytes(data.length);
 
         fos.write(dataLength);
         fos.write(data);

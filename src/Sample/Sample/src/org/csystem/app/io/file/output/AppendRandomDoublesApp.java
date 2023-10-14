@@ -1,11 +1,11 @@
 package org.csystem.app.io.file.output;
 
 import org.csystem.util.console.Console;
+import org.csystem.util.converter.BitConverter;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.util.Random;
 
 import static org.csystem.util.console.commandline.CommandLineArgsUtil.checkLengthEquals;
@@ -24,7 +24,7 @@ public class AppendRandomDoublesApp {
             while (count-- > 0) {
                 double val = random.nextDouble(100);
                 Console.writeLine("%f", val);
-                byte [] data = ByteBuffer.allocate(Double.BYTES).putDouble(val).array();
+                byte [] data = BitConverter.getBytes(val);
 
                 fos.write(data);
             }

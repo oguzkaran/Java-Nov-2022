@@ -1,8 +1,8 @@
 package org.csystem.app.io.file.output;
 
 import org.csystem.util.console.Console;
-import org.csystem.util.converter.BitConverter;
 
+import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.util.Random;
 
 import static org.csystem.util.console.commandline.CommandLineArgsUtil.checkLengthEquals;
 
-public class AppendRandomIntsApp {
+public class AppendRandomDoublesDataOutputStreamApp {
     private static int getCount(String countStr)
     {
         return Integer.parseInt(countStr);
@@ -18,18 +18,15 @@ public class AppendRandomIntsApp {
 
     private static void doAppend(String path, int count)
     {
-        try (FileOutputStream fos = new FileOutputStream(path, true)) {
+        try (FileOutputStream fos = new FileOutputStream(path, true); DataOutputStream dos = new DataOutputStream(fos)) {
             Random random = new Random();
 
             while (count-- > 0) {
-                int val = random.nextInt(100);
-                Console.write("%d ", val);
-                byte [] data = BitConverter.getBytes(val);
+                double val = random.nextDouble(100);
 
-                fos.write(data);
+                Console.writeLine("%f", val);
+                dos.writeDouble(val);
             }
-
-            Console.writeLine();
         }
         catch (FileNotFoundException ex) {
             Console.writeErrLine("Problem occurred while opening the file:%s", ex.getMessage());

@@ -1,11 +1,11 @@
 package org.csystem.app.io.file.input;
 
 import org.csystem.util.console.Console;
+import org.csystem.util.converter.BitConverter;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 
 import static org.csystem.util.console.commandline.CommandLineArgsUtil.checkLengthEquals;
 
@@ -22,7 +22,7 @@ public class ReadDoublesApp {
                 if (result != data.length)
                     throw new IOException("Invalid file format!...");
 
-                double val = ByteBuffer.wrap(data).getDouble();
+                double val = BitConverter.toDouble(data);
 
                 Console.writeLine("%f", val);
             }
