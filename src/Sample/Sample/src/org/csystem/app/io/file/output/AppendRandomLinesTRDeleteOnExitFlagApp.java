@@ -4,17 +4,26 @@ import org.csystem.util.console.Console;
 import org.csystem.util.string.StringUtil;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Random;
 
 import static org.csystem.util.console.commandline.CommandLineArgsUtil.checkLengthEquals;
 
-public class AppendRandomLinesTRApp {
+public class AppendRandomLinesTRDeleteOnExitFlagApp {
     private static void doAppend(String path, int count) throws IOException
     {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, StandardCharsets.UTF_8, true))) {
+        File file = File.createTempFile("org-csystem", ".txt", new File(System.getProperty("user.dir")));
+
+        try (BufferedWriter bw = Files.newBufferedWriter(Path.of(file.getAbsolutePath()),
+                StandardCharsets.UTF_8,
+                StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
+
+            file.deleteOnExit();
             Random random = new Random();
 
             while (count-- > 0)
@@ -29,8 +38,9 @@ public class AppendRandomLinesTRApp {
     {
         checkLengthEquals(args.length, 2, "Wrong number of arguments!...");
 
-        try  {
+        try {
             doAppend(args[0], Integer.parseInt(args[1]));
+            Console.readChar();
         }
         catch (NumberFormatException ignore) {
             Console.writeErrLine("Invalid count value!...");
