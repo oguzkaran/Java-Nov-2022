@@ -1,7 +1,7 @@
 /*----------------------------------------------------------
 	FILE			: Point.java
 	AUTHOR			: Java-Nov-2022 Group
-	LAST UPDATE		: 22.07.2023
+	LAST UPDATE		: 23.01.2024
 	
 	Immutable Point class that represents a point in cartesian plane
 	
@@ -10,9 +10,15 @@
 ------------------------------------------------------------*/
 package org.csystem.math.geometry;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 import static java.lang.Math.*;
 
-public class Point {
+public class Point implements Serializable {
+	@Serial
+	private static final long serialVersionUID = -10L;
+
 	private static final double DELTA = 0.00001;
 	private final double m_x, m_y;
 

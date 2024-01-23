@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------
 	FILE		: Fraction.java
 	AUTHOR		: Java-Nov-2022 Group
-	LAST UPDATE	: 22.07.2023
+	LAST UPDATE	: 23.01.2024
 
 	Fraction class that represents fraction
 
@@ -10,7 +10,12 @@
 ----------------------------------------------------------------*/
 package org.csystem.math;
 
-public class Fraction {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class Fraction implements Serializable {
+    @Serial
+    private static final long serialVersionUID = -1L;
     private int m_a;
     private int m_b;
 

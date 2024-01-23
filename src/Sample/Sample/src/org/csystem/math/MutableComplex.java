@@ -20,12 +20,16 @@
 ------------------------------------------------------------*/
 package org.csystem.math;
 
-import org.csystem.math.geometry.Point;
+import java.io.Serial;
+import java.io.Serializable;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
-public class MutableComplex {
+public class MutableComplex implements Serializable {
+	@Serial
+	private static final long serialVersionUID = -1L;
+
 	private static final double DELTA = 0.00001;
 	public double m_real;
 	public double m_imag;
