@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class CImage {
     private final File m_path;
-    private BufferedImage m_bufferedImage;
+    private BufferedImage  m_bufferedImage;
 
     public CImage(String path) throws IOException
     {
